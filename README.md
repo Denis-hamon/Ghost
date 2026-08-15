@@ -12,7 +12,7 @@ does not guess: **abstention is the product.**
 - Zero LLM judges in the decision path — geometry + execution-grounded outcomes only.
 - Reinforcement accepts only grounded outcomes (`grounded_by`: how the result was measured).
 
-Website: [denis-hamon.github.io/ghost-mcp](https://denis-hamon.github.io/ghost-mcp)
+Website: [denis-hamon.github.io/Ghost](https://denis-hamon.github.io/Ghost)
 
 ## Serving honesty
 
