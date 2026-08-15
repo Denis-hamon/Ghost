@@ -10,297 +10,360 @@
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='0.3' cy='0.3'%3E%3Cstop offset='0' stop-color='%236467f2'/%3E%3Cstop offset='1' stop-color='%234f39f6'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Cpath d='M10 22v-8a6 6 0 0 1 12 0v8h-2.6l-1.4-2.4-1.6 2.4h-1.6l-1.6-2.4-1.2 2.4z' fill='%23040712'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23222220'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23f2f2ee' font-family='Georgia'%3EG%3C/text%3E%3C/svg%3E" />
 </head>
 <body>
 
-  <!-- ======================= NAV ======================= -->
+  <!-- NAV -->
   <nav class="nav">
     <div class="container nav-inner">
-      <a class="brand" href="#top"><span class="mark"></span> GHOST<span style="color:var(--text-faint);font-weight:500">&nbsp;MCP</span></a>
+      <a class="brand" href="#top"><span class="mark">G</span> GHOST</a>
       <ul class="nav-links">
         <li><a href="#what">What it is</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#tools">Tools</a></li>
         <li><a href="#honesty">Honesty</a></li>
-        <li><a href="#install">Install</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#roadmap">Roadmap</a></li>
       </ul>
-      <a class="btn btn-primary" href="https://github.com/Denis-hamon/Ghost">GitHub</a>
+      <a class="btn btn-primary btn-sm" href="https://github.com/Denis-hamon/Ghost">GitHub →</a>
     </div>
   </nav>
 
-  <!-- ======================= HERO ======================= -->
+  <!-- HERO -->
   <header class="hero" id="top">
     <div class="container hero-inner">
-      <span class="pill"><span class="dot"></span> v0.4.0 · serving pool v8 (n = 207) · Model Context Protocol</span>
-      <h1>The ghost of every past run <span class="accent">grades your patch draft.</span></h1>
+      <span class="kicker-pill"><span class="dot"></span> v0.4.0 · serving pool v8 · Model Context Protocol</span>
+      <h1>The ghost of every past run <em>grades your patch draft.</em></h1>
       <p class="lede">
         GHOST is a <b>goal-free world model for coding agents</b>, served as an MCP server.
-        It compares your candidate diff to the geometry of past run outcomes — failures to avoid,
-        successes to imitate — and predicts <i>before</i> you spend an execution.
-        And when it does not know, <i>it says so</i>: calibrated abstention is the product.
+        It compares your candidate diff to the geometry of past run outcomes — failures to
+        avoid, successes to imitate — before you spend the execution. And when it does not
+        know, it says so.
       </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#install">Install via MCP</a>
-        <a class="btn btn-ghost" href="https://github.com/Denis-hamon/latent-imagination">Read the measurement paper trail</a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
       </div>
-
-      <div class="stats">
-        <div class="stat"><b>0.952</b><span>measured accuracy (LOAO) — Wilson 95% [0.773, 0.992]</span></div>
-        <div class="stat"><b>10%</b><span>coverage of the calibrated regime — outside it, GHOST abstains</span></div>
-        <div class="stat"><b>207</b><span>labeled patch runs in pool v8 · 94 tasks · 54 code families</span></div>
-        <div class="stat"><b>0</b><span>LLM judges in the decision path — geometry + grounded outcomes only</span></div>
-      </div>
+      <p class="hero-note">Advisory only — no tool replaces your tests. Abstention is the product.</p>
     </div>
   </header>
 
-  <!-- ======================= WHAT IT IS ======================= -->
+  <!-- STATS BAND -->
+  <div class="stats-band">
+    <div class="container">
+      <div class="stat"><b>207</b><span>labeled patch runs in the served pool (94 tasks, 54 code families)</span></div>
+      <div class="stat"><b>0.952</b><span>measured accuracy in the calibrated regime — Wilson 95% [0.773, 0.992]</span></div>
+      <div class="stat"><b>10%</b><span>coverage of that regime — outside it, GHOST answers “abstain”</span></div>
+      <div class="stat"><b>0</b><span>LLM judges in the decision path — geometry &amp; grounded outcomes only</span></div>
+    </div>
+  </div>
+
+  <!-- 01 — WHAT -->
   <section id="what">
     <div class="container">
-      <div class="kicker">What it is</div>
-      <h2>An advisory oracle for patch-consequence prediction</h2>
-      <p class="section-lede">
-        Coding agents spend executions on drafts that fail. GHOST reads the draft before the run and
-        answers one question: <b>does this look like the patches that worked before?</b> — without
-        needing a goal statement, without a judge, and without pretending to know beyond its
-        measured regime.
-      </p>
+      <div class="section-head">
+        <span class="kicker"><span class="n">01</span>what it is</span>
+        <h2>Know the risk <em>before</em> you run.</h2>
+        <p class="section-lede">
+          Coding agents spend executions on drafts that fail. GHOST reads the draft first and
+          answers one question — <b>does this look like the patches that worked before?</b> —
+          with no goal statement, no judge, and no pretending beyond its measured regime.
+        </p>
+      </div>
       <div class="grid grid-3">
         <div class="card">
-          <span class="icon">👻</span>
-          <h3>Goal-free by construction</h3>
-          <p>No task description, no acceptance criteria required. The score is the distance to the
-          nearest past <b>failure</b> minus the distance to the nearest past <b>success</b> — a
-          failure-attractor in latent patch space.</p>
+          <span class="glyph">goal-free</span>
+          <h3>No task description needed</h3>
+          <p>The score is the distance to the nearest past <b>failure</b> minus the distance to
+          the nearest past <b>success</b>, in latent patch space — a failure attractor that works
+          without acceptance criteria.</p>
         </div>
         <div class="card">
-          <span class="icon">🤫</span>
+          <span class="glyph">calibrated</span>
           <h3>Abstention is the product</h3>
-          <p>GHOST only answers inside a calibrated regime (measured accuracy ≥ 0.95). Outside it,
-          the response is <code class="inline">abstain</code> with the reason — <i>the ghost stays
-          silent when it does not know.</i></p>
+          <p>Verdicts are served only inside a regime measured by cross-validation
+          (accuracy ≥ 0.95). Everywhere else the response is <code class="inline">abstain</code>,
+          with the reason and the nearest pool family named.</p>
         </div>
         <div class="card">
-          <span class="icon">🛡️</span>
-          <h3>Advisory only, grounded always</h3>
-          <p>Nothing blocks, nothing replaces your tests. Reinforcement accepts only
-          <b>execution-grounded outcomes</b> (a measured method, never the model's opinion).</p>
+          <span class="glyph">grounded</span>
+          <h3>Only real outcomes count</h3>
+          <p>Reinforcement accepts execution-grounded results (<code class="inline">pytest-f2p</code>,
+          <code class="inline">ci</code>, <code class="inline">human</code>…). A model’s opinion about
+          its own patch is rejected — always.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ======================= HOW IT WORKS ======================= -->
-  <section id="how">
+  <!-- 02 — HOW / LOOP -->
+  <section id="how" style="padding-top:0">
     <div class="container">
-      <div class="kicker">How it works</div>
-      <h2>Four steps, one feedback loop</h2>
-      <div class="steps">
-        <div class="step">
-          <h3>Preflight — free deterministic checks</h3>
-          <p>Before spending a model call: does the diff even apply? Does it compile? Is it a
-          near-full rewrite? Zero tokens, immediate signal.</p>
-          <pre class="code"><span class="c"># deterministic, zero-LLM</span>
-preflight_patch(repo_path=<span class="s">"/path/to/repo"</span>, diff_text=<span class="s">"diff --git …"</span>)
-<span class="c"># → { ok: true, checks: { apply, compile } }</span></pre>
-        </div>
-        <div class="step">
-          <h3>Risk scan — the ghost scores the draft</h3>
-          <p>The state text and the diff are embedded (UniXcoder-base, 768-d), composed, and
-          compared to every past outcome in the pool: distance to nearest failure minus distance
-          to nearest success. The verdict is served only inside the measured regime.</p>
-          <pre class="code">risk_scan(state_text=<span class="s">"buggy module…"</span>, diff_text=<span class="s">"…"</span>,
-          reporter=<span class="s">"your-agent-id"</span>)
-<span class="c"># → { decision: "low_risk" | "high_risk" | "abstain",
-#     attractor_score, confidence, call_id,
-#     family: nearest pool family + coverage }   <span class="n">(v0.4.0)</span></span></pre>
-        </div>
-        <div class="step">
-          <h3>Run the real tests</h3>
-          <p>GHOST never substitutes execution. The draft is applied, the suite runs, the outcome is
-          observed — that observation is the only label the system trusts.</p>
-        </div>
-        <div class="step">
-          <h3>Report the grounded outcome — close the loop</h3>
-          <p>The measured pass/fail goes back with its <b>method</b> (<code class="inline">pytest-f2p</code>,
-          <code class="inline">ci</code>, <code class="inline">human</code>…). Ungrounded self-declarations
-          are rejected from reinforcement. Accumulated pairs grow the pool and widen the regime.</p>
-          <pre class="code">report_outcome(call_id=<span class="s">"1b60f8b814b1"</span>, passed=<span class="n">true</span>,
-               reporter=<span class="s">"your-agent-id"</span>, grounded_by=<span class="s">"pytest-f2p"</span>)</pre>
-        </div>
+      <div class="section-head">
+        <span class="kicker"><span class="n">02</span>how it works</span>
+        <h2>Measure, abstain, reinforce — <em>repeat.</em></h2>
+        <p class="section-lede">One four-step contract closes the loop: every grounded outcome
+        you report grows the pool and widens the regime where GHOST can answer.</p>
       </div>
-
-      <div class="grid grid-2" style="margin-top:40px">
+      <div class="loop">
         <div class="card">
-          <h3>Geometry, not generation</h3>
-          <p>GHOST does not generate patches and does not rewrite them. It is a <b>measurement
-          instrument over representation space</b>: every pool row keeps its provenance (task,
-          authoring model, campaign) because a mixed pool is measured before it is built.</p>
+          <h3>Preflight — free checks</h3>
+          <p>Does the diff apply? Does it compile? Near-full rewrite? Deterministic, zero tokens,
+          run before anything else.</p>
+          <pre class="code"><span class="f">preflight_patch</span>(repo_path, diff_text)
+<span class="c"># → { ok, checks: { apply, compile } }</span></pre>
         </div>
         <div class="card">
-          <h3>The flywheel</h3>
-          <p>Nightly collection matches outcomes to scans by <code class="inline">call_id</code>,
-          deduplicates against the pool, stratifies by authoring agent, and flags distribution
-          poison — then promotion is an owner-supervised, disclosed act. Never silent.</p>
+          <h3>Risk scan — the ghost scores</h3>
+          <p>State + diff are embedded (UniXcoder-base), composed, and compared to every past
+          outcome: nearest failure vs nearest success.</p>
+          <pre class="code"><span class="f">risk_scan</span>(state, diff, reporter)
+<span class="c"># → low_risk | high_risk | abstain
+#   + call_id + family diagnosis</span></pre>
+        </div>
+        <div class="card">
+          <h3>Run — then report grounded</h3>
+          <p>Run your tests, then send the measured outcome back with its method. It pairs with
+          the scan by <code class="inline">call_id</code> for the flywheel.</p>
+          <pre class="code"><span class="f">report_outcome</span>(call_id, passed,
+  grounded_by=<span class="s">"pytest-f2p"</span>)</pre>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ======================= TOOLS ======================= -->
-  <section id="tools">
+  <!-- 03 — TOOLS -->
+  <section id="tools" style="padding-top:0">
     <div class="container">
-      <div class="kicker">Tools</div>
-      <h2>Five MCP tools, one served pool</h2>
+      <div class="section-head">
+        <span class="kicker"><span class="n">03</span>tools</span>
+        <h2>Five tools, <em>one served pool.</em></h2>
+      </div>
       <table>
-        <thead>
-          <tr><th>Tool</th><th>What it does</th><th>Cost</th></tr>
-        </thead>
+        <thead><tr><th>Tool</th><th>What it does</th><th>Cost</th></tr></thead>
         <tbody>
           <tr><td><b>preflight_patch</b></td><td>git-apply check · py_compile · rewrite detection</td><td><span class="mono">0 tokens</span></td></tr>
-          <tr><td><b>risk_scan</b></td><td>goal-free failure-attractor score with calibrated abstention; names the nearest pool family when abstaining <span class="chip chip-done">v0.4.0</span></td><td><span class="mono">1 embed</span></td></tr>
-          <tr><td><b>near_mis_patches</b></td><td>k nearest pool neighbors with their <i>real</i> execution outcomes — inform a choice instead of a verdict</td><td><span class="mono">1 embed</span></td></tr>
+          <tr><td><b>risk_scan</b></td><td>goal-free failure-attractor with calibrated abstention; names the nearest pool family when abstaining <span class="chip chip-done">v0.4.0</span></td><td><span class="mono">1 embed</span></td></tr>
+          <tr><td><b>near_mis_patches</b></td><td>k nearest pool neighbors with their real execution outcomes — inform a choice instead of a verdict</td><td><span class="mono">1 embed</span></td></tr>
           <tr><td><b>report_outcome</b></td><td>journals the grounded result; pairs with the scan by <code class="inline">call_id</code> for the flywheel</td><td><span class="mono">log write</span></td></tr>
-          <tr><td><b>assess_patch</b></td><td>GOLD axis (requires the goal text) — harness/evaluation mode only, unavailable in production by design</td><td><span class="mono">3 embeds</span></td></tr>
+          <tr><td><b>assess_patch</b></td><td>gold axis (requires the goal text) — harness/evaluation mode only, unavailable in production by design</td><td><span class="mono">3 embeds</span></td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <!-- ======================= HONESTY ======================= -->
-  <section id="honesty">
+  <!-- 04 — ANY STACK / INSTALL -->
+  <section id="install" style="padding-top:0">
     <div class="container">
-      <div class="kicker">Measured honesty</div>
-      <h2>Every number on this page was measured, and served</h2>
-      <table>
-        <thead><tr><th>Instrument</th><th>Global</th><th>Reliable regime</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><b>risk_scan</b> <span class="mono">(goal-free world model)</span></td>
-            <td>AUC 0.615–0.675 <span style="color:var(--text-faint)">(rank, not verdict)</span></td>
-            <td><b style="color:var(--positive)">acc 0.952, Wilson 95% [0.773, 0.992]</b> on the 10% of queries it answers</td>
-          </tr>
-          <tr>
-            <td>everything else</td>
-            <td>—</td>
-            <td><code class="inline">abstain</code></td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="callout">
-        <b>What this means:</b> GHOST is not a general-purpose predictor and never claims to be one.
-        The calibration (τ pinned in a governance artifact, LOAO-cross-validated) is served alongside
-        the pool — clients can audit the regime before trusting a single verdict. A verdict without
-        a measured regime is indistinguishable from a guess; GHOST refuses to guess.
+      <div class="section-head">
+        <span class="kicker"><span class="n">04</span>install</span>
+        <h2>Works with <em>your agent stack.</em></h2>
+        <p class="section-lede">GHOST speaks MCP — any client with an MCP server list can use it.
+        Remote HTTP transport keeps the weights and the pool on the serving host; one URL is all
+        the client needs.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ======================= INSTALL ======================= -->
-  <section id="install">
-    <div class="container">
-      <div class="kicker">Install</div>
-      <h2>One URL, like any other MCP server</h2>
       <div class="grid grid-2">
-        <div>
-          <p class="section-lede" style="margin-bottom:16px">Remote HTTP transport (recommended — weights and pool stay on the serving host):</p>
+        <div class="card">
+          <h3>Remote HTTP (recommended)</h3>
           <pre class="code"><span class="c"># Claude Code</span>
-claude mcp add --transport http ghost <span class="s">http://ghost-mcp:8093/mcp</span>
+claude mcp add --transport http \
+  ghost <span class="s">http://&lt;host&gt;:8093/mcp</span>
 
 <span class="c"># opencode / Cursor / any mcpServers client</span>
-{
-  <span class="s">"mcpServers"</span>: {
-    <span class="s">"ghost"</span>: { <span class="s">"url"</span>: <span class="s">"http://ghost-mcp:8093/mcp"</span> }
-  }
-}</pre>
+{ <span class="s">"mcpServers"</span>: { <span class="s">"ghost"</span>: {
+    <span class="s">"url"</span>: <span class="s">"http://&lt;host&gt;:8093/mcp"</span> } } }</pre>
         </div>
-        <div>
-          <p class="section-lede" style="margin-bottom:16px">Local stdio (colocated, torch + transformers, no network):</p>
-          <pre class="code"><span class="c"># pool + calibration expected under data/ (env-overridable)</span>
-{
-  <span class="s">"mcpServers"</span>: {
-    <span class="s">"ghost"</span>: {
-      <span class="s">"command"</span>: <span class="s">".venv/bin/python"</span>,
-      <span class="s">"args"</span>: [<span class="s">"server/ghost_server.py"</span>]
-    }
-  }
-}</pre>
+        <div class="card">
+          <h3>Local stdio (colocated)</h3>
+          <pre class="code">{ <span class="s">"mcpServers"</span>: { <span class="s">"ghost"</span>: {
+    <span class="s">"command"</span>: <span class="s">".venv/bin/python"</span>,
+    <span class="s">"args"</span>: [<span class="s">"server/ghost_server.py"</span>]
+} } }
+<span class="c"># pool + calibration served from data/ ·
+# env: LI_POOL_JSON, LI_RISK_CALIB…</span></pre>
         </div>
       </div>
-      <div class="callout">
-        <b>Auth:</b> when <code class="inline">GHOST_TOKEN</code> is set on the server, clients must send
-        <code class="inline">Authorization: Bearer &lt;token&gt;</code> — the server refuses to boot
-        unprotected if the token cannot be enforced. Without it, serving is internal-network only.
-      </div>
+      <p class="hero-note" style="text-align:left">With <code class="inline">GHOST_TOKEN</code> set, the server requires
+      <code class="inline">Authorization: Bearer …</code> and refuses to boot if the token cannot be
+      enforced (fail-closed). Without it: internal network only.</p>
     </div>
   </section>
 
-  <!-- ======================= ROADMAP ======================= -->
-  <section id="roadmap">
+  <!-- 05 — OPEN -->
+  <section style="padding-top:0">
     <div class="container">
-      <div class="kicker">Roadmap</div>
-      <h2>Where the ghost is heading</h2>
-      <div class="roadmap">
-        <div class="road">
-          <div class="when">2026-08-15</div>
-          <div>
-            <h4>Family diagnostics for abstention <span class="chip chip-done">SHIPPED</span></h4>
-            <p>Pool rows carry a mechanically-derived task family; abstentions now name the
-            out-of-coverage family and its coverage instead of staying silent.</p>
-          </div>
+      <div class="section-head">
+        <span class="kicker"><span class="n">05</span>open</span>
+        <h2>Open instrument. <em>Open measurements.</em></h2>
+        <p class="section-lede">The calibration constants are served alongside the pool — clients
+        can audit the regime before trusting a single verdict. The server code is Apache-2.0, born
+        inside an open measurement project where every number on this page was produced, challenged,
+        and logged.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card"><span class="glyph">audit</span><h3>Served calibration</h3><p>τ and the LOAO regime are pinned in governance artifacts shipped with the server — not folklore.</p></div>
+        <div class="card"><span class="glyph">provenance</span><h3>Sealed pools</h3><p>Each pool version carries content-hash provenance (lineage, author strata, sha256). A promotion swaps, discloses, and can roll back.</p></div>
+        <div class="card"><span class="glyph">no judge</span><h3>Non-LLM by design</h3><p>The decision path contains zero LLM judges — GHOST exists to <i>complement</i> the models that call it, not imitate them.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 — HONESTY (dark band) -->
+  <section id="honesty" style="padding-top:0">
+    <div class="container">
+      <div class="honesty-band">
+        <span class="kicker"><span style="color:#6f6f80">06</span> measured honesty</span>
+        <h2 style="margin-top:12px">Every number here was <em style="color:#8b7bff">measured, and served.</em></h2>
+        <div class="honesty-grid">
+          <div><b>0.952</b><span>accuracy inside the calibrated regime — Wilson 95% CI [0.773, 0.992], leave-one-agent-out</span></div>
+          <div><b>~10%</b><span>of queries fall in that regime; the rest receive <span class="mono" style="color:#c9c9d4">abstain</span> with the reason</span></div>
+          <div><b>0.615–0.675</b><span>global goal-free AUC — a rank, honestly disclosed, never dressed as a verdict</span></div>
         </div>
-        <div class="road">
-          <div class="when">2026-08-15</div>
-          <div>
-            <h4>Flywheel stage 2 <span class="chip chip-done">SHIPPED</span></h4>
-            <p>Grounded pairs are label-gated (execution-grounded only), deduplicated and assembled
-            into goal-free pool rows; embedding and the serving swap stay owner-supervised with
-            disclosure and rollback. Serving hardened: bearer token, pool provenance seals.</p>
-          </div>
+        <p style="margin-top:32px;font-size:13.5px;color:#9c9caf;max-width:640px">
+          A verdict without a measured regime is indistinguishable from a guess. GHOST refuses to
+          guess: an <span class="mono" style="color:#c9c9d4">abstain</span> tells you the query sits
+          outside the pool’s covered families — which is itself the signal to grow the pool there.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 — WHY -->
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker"><span class="n">07</span>why</span>
+        <h2>Why use <em>GHOST?</em></h2>
+      </div>
+      <div class="grid grid-2">
+        <div class="card"><h3>It saves executions</h3><p>A preflight pass is free; a risk scan is one embedding. Both happen before the expensive part — running the draft against the world.</p></div>
+        <div class="card"><h3>It cannot flatter you</h3><p>No confidence scores, no vibes. A verdict is a geometric distance to past failures and successes, served only where the geometry has been proven.</p></div>
+        <div class="card"><h3>It tells you when it’s blind</h3><p>Out of regime → abstain + the nearest family and its coverage. Your agent decides with its own tests, and the outcome strengthens the model.</p></div>
+        <div class="card"><h3>It compounds</h3><p>Grounded outcomes feed a nightly flywheel: deduplicated, stratified by author, poison-flagged, promoted to new pool versions under disclosure.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="cta-band">
+        <h2>Get <em>started</em></h2>
+        <p class="section-lede" style="margin:12px auto 28px">Add the server to your agent, keep running your tests, report what really happened.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/Denis-hamon/Ghost">GitHub repository</a>
+          <a class="btn btn-ghost" href="https://github.com/Denis-hamon/Ghost#install">Read the install guide</a>
         </div>
-        <div class="road">
-          <div class="when">next</div>
-          <div>
-            <h4>Pool v9 promotion <span class="chip chip-next">NEXT</span></h4>
-            <p>First flywheel promotion: embed the assembled goal-free rows, recompute the LOAO
-            calibration on v9, serve behind the existing env overrides with rollback to v8.</p>
-          </div>
+        <p class="fine">Apache-2.0 · built within the <a href="https://github.com/Denis-hamon/latent-imagination">Latent Imagination</a> measurement project · corpus DOI <a href="https://doi.org/10.5281/zenodo.21837153">10.5281/zenodo.21837153</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker"><span class="n">08</span>questions &amp; answers</span>
+        <h2>Questions &amp; <em>answers</em></h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>What is GHOST?</summary>
+          <p>A world model of patch outcomes for coding agents. It embeds (buggy state + draft diff)
+          into the same space where 207 labeled past runs live, and scores the draft by its distance
+          to failures versus successes. Served over MCP; advisory only.</p>
+        </details>
+        <details>
+          <summary>Does it generate or rewrite patches?</summary>
+          <p>No. GHOST never generates code. It measures. Generation stays with your agent — that is
+          exactly why the measurement complements it instead of competing with it.</p>
+        </details>
+        <details>
+          <summary>Why does it answer “abstain” so often?</summary>
+          <p>Because the verdict guarantee (acc ≥ 0.95) only holds on ~10% of the query space today.
+          Outside it, any answer would be a guess. Abstention names the nearest pool family and its
+          coverage, so you know what data is missing — and the flywheel exists to close that gap.</p>
+        </details>
+        <details>
+          <summary>Can it block my agent’s actions?</summary>
+          <p>Not this service. GHOST is advisory by construction. Blocking authorization lives in a
+          separate, measurement-governed machinery (FR-21 in the parent project) that requires
+          certified precision strictly above an economic bar — a regime no instrument has crossed yet.</p>
+        </details>
+        <details>
+          <summary>What counts as a grounded outcome?</summary>
+          <p>An outcome measured by execution — a test-suite verdict (<code class="inline">pytest-f2p</code>),
+          a CI result, a human-verified run. Outcomes reported without a measurement method are
+          rejected from reinforcement. Self-declared successes do not enter the pool.</p>
+        </details>
+        <details>
+          <summary>Is there an LLM inside?</summary>
+          <p>Not in the decision path. Embeddings are a fixed encoder (UniXcoder-base); scoring is
+          geometry; labels come from executed tests. An ensemble with an LLM judge was measured and
+          deliberately parked — the instrument’s value is being a non-LLM complement to LLMs.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker"><span class="n">09</span>roadmap</span>
+        <h2>Where the ghost is <em>heading</em></h2>
+      </div>
+      <div class="road">
+        <div class="when">2026-08-15</div>
+        <div>
+          <h4>Family diagnostics for abstention <span class="chip chip-done">shipped</span></h4>
+          <p>Pool rows carry mechanically-derived task families; abstentions name the out-of-coverage
+          family and its coverage instead of staying silent.</p>
         </div>
-        <div class="road">
-          <div class="when">registered</div>
-          <div>
-            <h4>Targeted growth of thin families <span class="chip chip-later">PRE-REGISTERED</span></h4>
-            <p>Quota-based generation window (new repo families + CI-workflow probe), author-pinned,
-            amendment-only — envelope registered, not yet spent.</p>
-          </div>
+      </div>
+      <div class="road">
+        <div class="when">2026-08-15</div>
+        <div>
+          <h4>Flywheel stage 2 + serving hardening <span class="chip chip-done">shipped</span></h4>
+          <p>Grounded pairs are label-gated, deduplicated, assembled into goal-free pool rows; bearer-token
+          auth (fail-closed), pool provenance seals, documented WORM backup.</p>
         </div>
-        <div class="road">
-          <div class="when">explicitly parked</div>
-          <div>
-            <h4>LLM-judge ensemble in the decision path <span class="chip chip-parked">PARKED</span></h4>
-            <p>A judge-ensemble candidate measured better coverage but stays out by design decision:
-            GHOST's value is a non-LLM complement to the LLMs that call it. The decision path keeps
-            zero judge dependency.</p>
-          </div>
+      </div>
+      <div class="road">
+        <div class="when">next</div>
+        <div>
+          <h4>Pool v9 promotion <span class="chip chip-next">next</span></h4>
+          <p>First flywheel promotion: embed assembled rows on the serving node, recompute the LOAO
+          calibration on v9, swap behind env overrides with disclosure and rollback to v8.</p>
+        </div>
+      </div>
+      <div class="road">
+        <div class="when">registered</div>
+        <div>
+          <h4>Targeted growth of thin families <span class="chip chip-later">pre-registered</span></h4>
+          <p>Quota-based generation window (new repo families + a CI-workflow probe), author-pinned,
+          amendment-only. Envelope registered — not yet spent.</p>
+        </div>
+      </div>
+      <div class="road">
+        <div class="when">parked</div>
+        <div>
+          <h4>LLM-judge ensemble in the decision path <span class="chip chip-parked">parked by design</span></h4>
+          <p>A judge ensemble measured wider coverage but stays out: GHOST’s value is a non-LLM complement
+          to the LLMs that call it. Owner decision, 2026-08-15.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ======================= FOOTER ======================= -->
+  <!-- FOOTER -->
   <footer>
     <div class="container foot">
-      <div>
-        <b style="color:var(--text-muted)">GHOST MCP</b> · Apache-2.0 ·
-        built within the <a href="https://github.com/Denis-hamon/latent-imagination">Latent Imagination</a>
-        measurement project · corpus DOI: <a href="https://doi.org/10.5281/zenodo.21837153">10.5281/zenodo.21837153</a>
-      </div>
-      <div>
-        Design language adapted from <a href="https://langfuse.com">langfuse.com</a> (tokens extracted 2026-08-15).
-      </div>
+      <div><b style="color:var(--body)">GHOST MCP</b> · Apache-2.0 · a Latent Imagination instrument</div>
+      <div>Design language adapted from <a href="https://langfuse.com">langfuse.com</a> (tokens extracted 2026-08-15 · display face: Fraunces, standing in for F37&nbsp;Analog)</div>
     </div>
   </footer>
 
