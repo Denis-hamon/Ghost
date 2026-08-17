@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Self-hosting — GHOST MCP</title>
+  <meta name="description" content="Run GHOST MCP yourself: remote HTTP or local stdio, bearer-token auth (fail-closed), env overrides, and the exact run commands." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Inter:wght@400;430;450;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23222220'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23f6f6f3' font-family='Georgia'%3EG%3C/text%3E%3C/svg%3E" />
+</head>
+<body class="sub">
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-github" viewBox="0 0 16 16">
+      <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+    </symbol>
+  </svg>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="../"><span class="mark">G</span> GHOST</a>
+      <ul class="nav-links">
+        <li><a href="../#what">What it is</a></li>
+        <li><a href="../#tools">Tools</a></li>
+        <li><a href="../#install">Install</a></li>
+        <li><a href="../#honesty">Honesty</a></li>
+        <li><a href="../#faq">FAQ</a></li>
+        <li><a href="../#roadmap">Roadmap</a></li>
+      </ul>
+      <a class="btn btn-primary" href="https://github.com/Denis-hamon/Ghost" style="box-shadow:none"><svg class="icon"><use href="#i-github"/></svg> GitHub <span class="kbd">↗</span></a>
+    </div>
+  </nav>
+
+  <div class="shell">
+
+  <aside class="rail rail-left" aria-label="Project panel">
+    <div class="rail-box">
+      <h6>Pool stats</h6>
+      <div class="statrow"><span>Labeled runs</span><b>207</b></div>
+      <div class="statrow"><span>Positives</span><b>73</b></div>
+      <div class="statrow"><span>Regime coverage</span><b>≈10%</b></div>
+      <div class="statrow"><span>Accuracy (LOAO)</span><b>0.952</b></div>
+      <div class="statrow"><span>τ (confidence bar)</span><b>0.1392</b></div>
+      <div class="statrow"><span>Served pool</span><b>v8</b></div>
+    </div>
+    <div class="rail-box">
+      <h6>Changelog <a href="../changelog/">View all</a></h6>
+      <div class="cl-item"><a href="../changelog/">Site v5 — vendor icons, motion, live tabs</a><time>2026-08-17</time></div>
+      <div class="cl-item"><a href="../changelog/">Family diagnostics for abstention</a><time>2026-08-15</time></div>
+      <div class="cl-item"><a href="../changelog/">Public repo — server v0.4.0 + calibration artifacts</a><time>2026-08-15</time></div>
+    </div>
+    <div class="rail-box">
+      <h6>Self-hosting guides <a href="../self-hosting/">All</a></h6>
+      <ul class="rail-links">
+        <li><a href="../self-hosting/#http">Remote HTTP (one URL)</a></li>
+        <li><a href="../self-hosting/#stdio">Local stdio (colocated)</a></li>
+        <li><a href="../self-hosting/#auth">Bearer token (fail-closed)</a></li>
+        <li><a href="../self-hosting/#env">Env overrides</a></li>
+      </ul>
+    </div>
+    <div class="rail-box">
+      <h6>Reference</h6>
+      <ul class="rail-links">
+        <li><a href="../tools/">Tools reference</a></li>
+        <li><a href="../calibration/">Served calibration</a></li>
+        <li><a href="https://github.com/Denis-hamon/latent-imagination">Measurement project</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.21837153">Corpus (Zenodo)</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="main">
+
+  <div class="container">
+    <div class="page-head" id="top">
+      <span class="crumb"><a href="../">GHOST</a> / self-hosting</span>
+      <h1 class="page-title">Self-host the ghost <span class="hl">in minutes.</span></h1>
+      <p class="page-lede">GHOST speaks MCP — any client with a server list can use it. Two
+      transports: <b>remote HTTP</b> (weights + pool stay on the serving host) or <b>local
+      stdio</b> (colocated, needs torch + transformers).</p>
+    </div>
+
+    <section id="http">
+      <div class="section-head">
+        <h2>Remote HTTP — recommended</h2>
+        <p>One URL is all the client needs.</p>
+      </div>
+      <pre class="code"><span class="c"># Claude Code</span>
+claude mcp add --transport http ghost <span class="s">http://&lt;host&gt;:8093/mcp</span>
+
+<span class="c"># opencode / Cursor / Cline / any MCP client</span>
+{ <span class="s">"mcpServers"</span>: { <span class="s">"ghost"</span>: { <span class="s">"url"</span>: <span class="s">"http://&lt;host&gt;:8093/mcp"</span> } } }</pre>
+    </section>
+
+    <section id="auth">
+      <div class="section-head">
+        <h2>Bearer token — fail-closed</h2>
+      </div>
+      <p class="prose">Set <code>GHOST_TOKEN</code> on the server to require
+      <code>Authorization: Bearer &lt;token&gt;</code>. The server <b>refuses to boot</b> if the
+      token is set but cannot be enforced (fail-closed). Without a token, serve on an internal
+      network only.</p>
+    </section>
+
+    <section id="stdio">
+      <div class="section-head">
+        <h2>Local stdio — colocated</h2>
+        <p>Zero network; the client spawns the process.</p>
+      </div>
+      <pre class="code">{ <span class="s">"mcpServers"</span>: { <span class="s">"ghost"</span>: {
+  <span class="s">"command"</span>: <span class="s">".venv/bin/python"</span>,
+  <span class="s">"args"</span>: [<span class="s">"server/ghost_server.py"</span>]
+} } }</pre>
+    </section>
+
+    <section id="env">
+      <div class="section-head"><h2>Env overrides</h2></div>
+      <table class="honesty-table">
+        <tr><th>variable</th><th>role</th></tr>
+        <tr><td><code>LI_POOL_JSON</code> · <code>LI_POOL_NPZ</code></td><td>served pool (rows + embeddings)</td></tr>
+        <tr><td><code>LI_RISK_CALIB</code></td><td>serving calibration (risk-scan regime)</td></tr>
+        <tr><td><code>LI_CALIBRATION</code></td><td>gold-axis calibration (assess_patch)</td></tr>
+        <tr><td><code>LI_LOG_PATH</code></td><td>telemetry journal (scans + grounded outcomes)</td></tr>
+        <tr><td><code>GHOST_HOST</code> · <code>GHOST_PORT</code></td><td>HTTP bind (default :8093)</td></tr>
+        <tr><td><code>GHOST_TOKEN</code></td><td>bearer auth, fail-closed</td></tr>
+      </table>
+      <p class="prose" style="margin-top:16px">Pool files
+      (<code>latent-pool-*.json/.npz</code>) are deployment artifacts and are <b>not committed</b> —
+      point <code>LI_POOL_JSON</code>/<code>LI_POOL_NPZ</code> at your copy.</p>
+    </section>
+
+    <section id="run">
+      <div class="section-head"><h2>Run it</h2></div>
+      <pre class="code"><span class="c">$</span> git clone https://github.com/Denis-hamon/Ghost &amp;&amp; cd Ghost
+<span class="c">$</span> pip install -r requirements.txt
+<span class="c">$</span> python server/ghost_http_server.py
+<span class="c"># [ghost] serving http://0.0.0.0:8093/mcp (pool latent-pool-v8.json, stateless)</span></pre>
+      <p class="prose" style="margin-top:16px">Weights, pool and calibration are loaded <b>before</b>
+      serving, so the first call pays no cold-start latency.</p>
+    </section>
+
+    <section id="layout">
+      <div class="section-head"><h2>Repository layout</h2></div>
+      <pre class="code">server/     ghost_server.py (stdio) + ghost_http_server.py (HTTP, mcp-2.0)
+artifacts/  risk-scan-v8-calibration.json · predictor-mcp-calibration.json
+docs/       this site
+data/       pool files go here on the serving host (not shipped)</pre>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <h5>GHOST MCP</h5>
+          <p class="about">The ghost of every past run grades your patch draft. Goal-free, calibrated,
+          advisory. An instrument of the Latent Imagination measurement project.</p>
+        </div>
+        <div>
+          <h5>Product</h5>
+          <ul>
+            <li><a href="../#what">What it is</a></li>
+            <li><a href="../#tools">Tools</a></li>
+            <li><a href="../#honesty">Honesty</a></li>
+            <li><a href="../#roadmap">Roadmap</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Open</h5>
+          <ul>
+            <li><a href="https://github.com/Denis-hamon/Ghost"><svg class="icon" style="width:13px;height:13px"><use href="#i-github"/></svg> GitHub repository</a></li>
+            <li><a href="https://github.com/Denis-hamon/latent-imagination">Measurement project</a></li>
+            <li><a href="https://doi.org/10.5281/zenodo.21837153">Corpus (Zenodo)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-fine">
+        <span>Apache-2.0 © 2026 Denis Hamon</span>
+      </div>
+    </div>
+  </footer>
+
+  </div><!-- /.main -->
+
+  <aside class="rail rail-right" aria-label="On this page">
+    <div class="rail-box toc-box">
+      <h6>On this page</h6>
+      <ul class="toc">
+        <li><a href="#top">Overview</a></li>
+        <li><a href="#http">Remote HTTP</a></li>
+        <li><a href="#auth">Bearer token</a></li>
+        <li><a href="#stdio">Local stdio</a></li>
+        <li><a href="#env">Env overrides</a></li>
+        <li><a href="#run">Run it</a></li>
+        <li><a href="#layout">Repository layout</a></li>
+      </ul>
+    </div>
+    <div class="rail-box rail-bottom">
+      <a href="https://github.com/Denis-hamon/Ghost" aria-label="GitHub"><svg class="icon" style="width:18px;height:18px"><use href="#i-github"/></svg></a>
+      <a class="btn btn-primary" href="../#install">Install <span class="kbd">I</span></a>
+    </div>
+  </aside>
+
+  </div><!-- /.shell -->
+
+  <script src="../site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tools reference — GHOST MCP</title>
+  <meta name="description" content="Signatures, semantics and real return shapes of the five GHOST MCP tools, taken from the served code." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Inter:wght@400;430;450;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23222220'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23f6f6f3' font-family='Georgia'%3EG%3C/text%3E%3C/svg%3E" />
+</head>
+<body class="sub">
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-github" viewBox="0 0 16 16">
+      <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+    </symbol>
+  </svg>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="../"><span class="mark">G</span> GHOST</a>
+      <ul class="nav-links">
+        <li><a href="../#what">What it is</a></li>
+        <li><a href="../#tools">Tools</a></li>
+        <li><a href="../#install">Install</a></li>
+        <li><a href="../#honesty">Honesty</a></li>
+        <li><a href="../#faq">FAQ</a></li>
+        <li><a href="../#roadmap">Roadmap</a></li>
+      </ul>
+      <a class="btn btn-primary" href="https://github.com/Denis-hamon/Ghost" style="box-shadow:none"><svg class="icon"><use href="#i-github"/></svg> GitHub <span class="kbd">↗</span></a>
+    </div>
+  </nav>
+
+  <div class="shell">
+
+  <aside class="rail rail-left" aria-label="Project panel">
+    <div class="rail-box">
+      <h6>Pool stats</h6>
+      <div class="statrow"><span>Labeled runs</span><b>207</b></div>
+      <div class="statrow"><span>Positives</span><b>73</b></div>
+      <div class="statrow"><span>Regime coverage</span><b>≈10%</b></div>
+      <div class="statrow"><span>Accuracy (LOAO)</span><b>0.952</b></div>
+      <div class="statrow"><span>τ (confidence bar)</span><b>0.1392</b></div>
+      <div class="statrow"><span>Served pool</span><b>v8</b></div>
+    </div>
+    <div class="rail-box">
+      <h6>Changelog <a href="../changelog/">View all</a></h6>
+      <div class="cl-item"><a href="../changelog/">Site v5 — vendor icons, motion, live tabs</a><time>2026-08-17</time></div>
+      <div class="cl-item"><a href="../changelog/">Family diagnostics for abstention</a><time>2026-08-15</time></div>
+      <div class="cl-item"><a href="../changelog/">Public repo — server v0.4.0 + calibration artifacts</a><time>2026-08-15</time></div>
+    </div>
+    <div class="rail-box">
+      <h6>Self-hosting guides <a href="../self-hosting/">All</a></h6>
+      <ul class="rail-links">
+        <li><a href="../self-hosting/#http">Remote HTTP (one URL)</a></li>
+        <li><a href="../self-hosting/#stdio">Local stdio (colocated)</a></li>
+        <li><a href="../self-hosting/#auth">Bearer token (fail-closed)</a></li>
+        <li><a href="../self-hosting/#env">Env overrides</a></li>
+      </ul>
+    </div>
+    <div class="rail-box">
+      <h6>Reference</h6>
+      <ul class="rail-links">
+        <li><a href="../tools/">Tools reference</a></li>
+        <li><a href="../calibration/">Served calibration</a></li>
+        <li><a href="https://github.com/Denis-hamon/latent-imagination">Measurement project</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.21837153">Corpus (Zenodo)</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="main">
+
+  <div class="container">
+    <div class="page-head" id="top">
+      <span class="crumb"><a href="../">GHOST</a> / tools</span>
+      <h1 class="page-title">Five tools, <span class="hl">one contract.</span></h1>
+      <p class="page-lede">Signatures and return shapes below are taken from the served code
+      (<code>server/ghost_http_server.py</code>, <code>server/ghost_server.py</code>) — <b>not from
+      documentation that could drift</b>.</p>
+    </div>
+
+    <section id="contract">
+      <div class="section-head">
+        <h2>The 4-step contract</h2>
+        <p>One loop, closed by grounding. Every outcome you report widens the regime where
+        GHOST can answer.</p>
+      </div>
+      <div class="cards">
+        <div class="card"><span class="glyph">01 · preflight_patch</span><h3>Free deterministic checks</h3><p>git-apply, py_compile, rewrite detection. Zero tokens — run first.</p></div>
+        <div class="card"><span class="glyph">02 · risk_scan</span><h3>Goal-free attractor score</h3><p>Returns <code class="inline">low_risk</code> / <code class="inline">high_risk</code> / <code class="inline">abstain</code> + a <code class="inline">call_id</code>.</p></div>
+        <div class="card"><span class="glyph">03 · your tests</span><h3>Run them</h3><p>No tool replaces executing your tests. Ever.</p></div>
+      </div>
+      <p class="prose" style="margin-top:16px"><b>04 · report_outcome</b> — the measured outcome and
+      its method. Self-declared opinions are rejected from reinforcement.</p>
+    </section>
+
+    <section id="risk_scan">
+      <div class="section-head"><h2><code class="inline">risk_scan</code> — the goal-free verdict</h2></div>
+      <pre class="code sig"><span class="f">risk_scan</span>(state_text: <span class="k">str</span>, diff_text: <span class="k">str</span>, exclude_task: <span class="k">str</span> = <span class="s">""</span>,
+          reporter: <span class="k">str</span> = <span class="s">""</span>) -&gt; <span class="k">str</span></pre>
+      <p class="prose">The ghost of every past run grades your diff draft: distance to the nearest
+      past <b>failure</b> minus distance to the nearest past <b>success</b> (failure-attractor,
+      goal-free — no gold text required). A verdict is rendered <b>only inside the calibrated
+      regime</b> (measured acc ≥ 0.95); everywhere else the answer is <code>abstain</code> — the
+      ghost stays silent when it does not know. <code>exclude_task</code> removes a task from the
+      pool (anti-leak); <code>reporter</code> is your agent identity, used to stratify
+      reinforcement.</p>
+      <pre class="code"><span class="c"># returns</span>
+<span class="c"># { "decision": "high_risk",            low_risk / high_risk / abstain</span>
+<span class="c">#   "attractor_score": <span class="n">-0.2423</span>,         d(nearest fail) − d(nearest pass)</span>
+<span class="c">#   "confidence": <span class="n">0.2358</span>, "tau": <span class="n">0.1392</span>,</span>
+<span class="c">#   "family": { "nearest_family": "…", "coverage": { "n": 6, "positives": 2 } },</span>
+<span class="c">#   "call_id": "3b11700f69f3" }          → report_outcome after your tests</span></pre>
+    </section>
+
+    <section id="preflight_patch">
+      <div class="section-head"><h2><code class="inline">preflight_patch</code> — the free tier</h2></div>
+      <pre class="code sig"><span class="f">preflight_patch</span>(repo_path: <span class="k">str</span>, diff_text: <span class="k">str</span>,
+                state_files: <span class="k">list</span>[<span class="k">str</span>] | <span class="k">None</span> = <span class="k">None</span>) -&gt; <span class="k">str</span></pre>
+      <p class="prose">Deterministic checks before any execution: <code>git apply --check</code>
+      (malformations, paths), <code>py_compile</code> of the patched result (syntax), then a
+      reverse-apply to leave the repo untouched. <b>Zero LLM tokens</b> — this is the tool to call
+      before investing in a test run.</p>
+      <pre class="code"><span class="c"># returns</span>
+<span class="c"># { "ok": <span class="n">true</span>,</span>
+<span class="c">#   "checks": { "apply": <span class="n">true</span>, "compile": { "mod.py": <span class="n">true</span> } },</span>
+<span class="c">#   "call_id": "9c41d2e07b2a" }</span>
+<span class="c"># on failure: "apply_err" / "compile_err" carry the tool stderr (last 400 chars)</span></pre>
+    </section>
+
+    <section id="report_outcome">
+      <div class="section-head"><h2><code class="inline">report_outcome</code> — close the loop</h2></div>
+      <pre class="code sig"><span class="f">report_outcome</span>(call_id: <span class="k">str</span>, passed: <span class="k">bool</span>, reporter: <span class="k">str</span> = <span class="s">""</span>,
+               grounded_by: <span class="k">str</span> = <span class="s">""</span>) -&gt; <span class="k">str</span></pre>
+      <p class="prose">Journals the <b>real</b> outcome of an evaluated patch — a grounded result
+      from execution, never the model's opinion. <code>grounded_by</code> names the measurement
+      method (<code>pytest-f2p</code>, <code>ci</code>, <code>human</code>). Outcomes without a
+      method are rejected from reinforcement. Pairs with the scan by
+      <code>call_id</code> for the nightly flywheel.</p>
+      <pre class="code"><span class="c"># returns</span>
+<span class="c"># "enregistré"</span></pre>
+    </section>
+
+    <section id="near_mis_patches">
+      <div class="section-head"><h2><code class="inline">near_mis_patches</code> — evidence, not vibes</h2></div>
+      <pre class="code sig"><span class="f">near_mis_patches</span>(state_text: <span class="k">str</span>, diff_text: <span class="k">str</span>, goal_text: <span class="k">str</span>,
+                 k: <span class="k">int</span> = <span class="n">3</span>) -&gt; <span class="k">str</span></pre>
+      <p class="prose">The k nearest pool patches in latent space, with their <b>actual execution
+      outcome</b> (pass/fail) — to inform a choice instead of rendering a verdict. Neighbours are
+      deduplicated by task: if two top hits are the on/off arms of the same task, only one is
+      kept.</p>
+      <pre class="code"><span class="c"># returns</span>
+<span class="c"># { "call_id": "…", "nearest": [</span>
+<span class="c">#     { "task": "…", "arm": "on", "family": "…", "y": <span class="n">1</span>, "sim": <span class="n">0.87</span> }, … ] }</span></pre>
+    </section>
+
+    <section id="assess_patch">
+      <div class="section-head"><h2><code class="inline">assess_patch</code> — the gold axis</h2></div>
+      <pre class="code sig"><span class="f">assess_patch</span>(state_text: <span class="k">str</span>, diff_text: <span class="k">str</span>, goal_text: <span class="k">str</span>) -&gt; <span class="k">str</span></pre>
+      <p class="prose"><b>Harness / evaluation mode only</b>: goal-bound latent energy — it requires
+      the goal text, which is unavailable in production. Advisory, like everything else here. Its
+      calibration (<code>predictor-mcp-calibration.json</code>) is documented on the
+      <a href="../calibration/">calibration page</a>.</p>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <h5>GHOST MCP</h5>
+          <p class="about">The ghost of every past run grades your patch draft. Goal-free, calibrated,
+          advisory. An instrument of the Latent Imagination measurement project.</p>
+        </div>
+        <div>
+          <h5>Product</h5>
+          <ul>
+            <li><a href="../#what">What it is</a></li>
+            <li><a href="../#tools">Tools</a></li>
+            <li><a href="../#honesty">Honesty</a></li>
+            <li><a href="../#roadmap">Roadmap</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Open</h5>
+          <ul>
+            <li><a href="https://github.com/Denis-hamon/Ghost"><svg class="icon" style="width:13px;height:13px"><use href="#i-github"/></svg> GitHub repository</a></li>
+            <li><a href="https://github.com/Denis-hamon/latent-imagination">Measurement project</a></li>
+            <li><a href="https://doi.org/10.5281/zenodo.21837153">Corpus (Zenodo)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-fine">
+        <span>Apache-2.0 © 2026 Denis Hamon</span>
+      </div>
+    </div>
+  </footer>
+
+  </div><!-- /.main -->
+
+  <aside class="rail rail-right" aria-label="On this page">
+    <div class="rail-box toc-box">
+      <h6>On this page</h6>
+      <ul class="toc">
+        <li><a href="#top">Overview</a></li>
+        <li><a href="#contract">The 4-step contract</a></li>
+        <li><a href="#risk_scan">risk_scan</a></li>
+        <li><a href="#preflight_patch">preflight_patch</a></li>
+        <li><a href="#report_outcome">report_outcome</a></li>
+        <li><a href="#near_mis_patches">near_mis_patches</a></li>
+        <li><a href="#assess_patch">assess_patch</a></li>
+      </ul>
+    </div>
+    <div class="rail-box rail-bottom">
+      <a href="https://github.com/Denis-hamon/Ghost" aria-label="GitHub"><svg class="icon" style="width:18px;height:18px"><use href="#i-github"/></svg></a>
+      <a class="btn btn-primary" href="../#install">Install <span class="kbd">I</span></a>
+    </div>
+  </aside>
+
+  </div><!-- /.shell -->
+
+  <script src="../site.js" defer></script>
+</body>
+</html>

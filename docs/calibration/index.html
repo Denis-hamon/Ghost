@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Served calibration — GHOST MCP</title>
+  <meta name="description" content="The two calibration artifacts GHOST ships and serves — risk-scan v8 regime and gold-axis predictor — rendered verbatim with how to read them." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Inter:wght@400;430;450;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23222220'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23f6f6f3' font-family='Georgia'%3EG%3C/text%3E%3C/svg%3E" />
+</head>
+<body class="sub">
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-github" viewBox="0 0 16 16">
+      <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+    </symbol>
+  </svg>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="../"><span class="mark">G</span> GHOST</a>
+      <ul class="nav-links">
+        <li><a href="../#what">What it is</a></li>
+        <li><a href="../#tools">Tools</a></li>
+        <li><a href="../#install">Install</a></li>
+        <li><a href="../#honesty">Honesty</a></li>
+        <li><a href="../#faq">FAQ</a></li>
+        <li><a href="../#roadmap">Roadmap</a></li>
+      </ul>
+      <a class="btn btn-primary" href="https://github.com/Denis-hamon/Ghost" style="box-shadow:none"><svg class="icon"><use href="#i-github"/></svg> GitHub <span class="kbd">↗</span></a>
+    </div>
+  </nav>
+
+  <div class="shell">
+
+  <aside class="rail rail-left" aria-label="Project panel">
+    <div class="rail-box">
+      <h6>Pool stats</h6>
+      <div class="statrow"><span>Labeled runs</span><b>207</b></div>
+      <div class="statrow"><span>Positives</span><b>73</b></div>
+      <div class="statrow"><span>Regime coverage</span><b>≈10%</b></div>
+      <div class="statrow"><span>Accuracy (LOAO)</span><b>0.952</b></div>
+      <div class="statrow"><span>τ (confidence bar)</span><b>0.1392</b></div>
+      <div class="statrow"><span>Served pool</span><b>v8</b></div>
+    </div>
+    <div class="rail-box">
+      <h6>Changelog <a href="../changelog/">View all</a></h6>
+      <div class="cl-item"><a href="../changelog/">Site v5 — vendor icons, motion, live tabs</a><time>2026-08-17</time></div>
+      <div class="cl-item"><a href="../changelog/">Family diagnostics for abstention</a><time>2026-08-15</time></div>
+      <div class="cl-item"><a href="../changelog/">Public repo — server v0.4.0 + calibration artifacts</a><time>2026-08-15</time></div>
+    </div>
+    <div class="rail-box">
+      <h6>Self-hosting guides <a href="../self-hosting/">All</a></h6>
+      <ul class="rail-links">
+        <li><a href="../self-hosting/#http">Remote HTTP (one URL)</a></li>
+        <li><a href="../self-hosting/#stdio">Local stdio (colocated)</a></li>
+        <li><a href="../self-hosting/#auth">Bearer token (fail-closed)</a></li>
+        <li><a href="../self-hosting/#env">Env overrides</a></li>
+      </ul>
+    </div>
+    <div class="rail-box">
+      <h6>Reference</h6>
+      <ul class="rail-links">
+        <li><a href="../tools/">Tools reference</a></li>
+        <li><a href="../calibration/">Served calibration</a></li>
+        <li><a href="https://github.com/Denis-hamon/latent-imagination">Measurement project</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.21837153">Corpus (Zenodo)</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="main">
+
+  <div class="container">
+    <div class="page-head" id="top">
+      <span class="crumb"><a href="../">GHOST</a> / calibration</span>
+      <h1 class="page-title">The numbers, <span class="hl">as served.</span></h1>
+      <p class="page-lede">Both calibration artifacts below ship in the repository
+      (<code>artifacts/</code>) and are loaded by the server at boot — <b>what you audit here is
+      what grades your patch</b>.</p>
+    </div>
+
+    <section id="why">
+      <div class="section-head">
+        <h2>Why a regime, not a score</h2>
+        <p>A verdict without a measured regime is indistinguishable from a guess.</p>
+      </div>
+      <table class="honesty-table">
+        <tr><th>instrument</th><th>global</th><th>reliable regime</th></tr>
+        <tr><td><code>risk_scan</code> (goal-free)</td><td>AUC 0.615–0.675 — a rank, not a verdict</td>
+            <td>acc 0.952, Wilson 95% [0.773, 0.992] on the ~10% of queries it answers</td></tr>
+        <tr><td>everything else</td><td>—</td><td><code>abstain</code></td></tr>
+      </table>
+      <p class="prose" style="margin-top:16px">GHOST refuses to dress the global rank up as a
+      verdict. Inside the regime, the answer comes with a measured accuracy; outside it, the answer
+      is <code>abstain</code> with the nearest pool family and its coverage — which is itself the
+      signal for where the pool must grow.</p>
+    </section>
+
+    <section id="riskscan">
+      <div class="section-head">
+        <h2>risk-scan v8 — the serving calibration</h2>
+        <p><code>artifacts/risk-scan-v8-calibration.json</code>, verbatim:</p>
+      </div>
+      <pre class="code">{ <span class="s">"pool"</span>: <span class="s">"latent-pool-v8.json"</span>,
+  <span class="s">"n"</span>: <span class="n">207</span>, <span class="s">"positifs"</span>: <span class="n">73</span>, <span class="s">"majority"</span>: <span class="n">0.6473</span>,
+  <span class="s">"recipe"</span>: <span class="s">"score = d(nearest fail) - d(nearest pass), LOAO F1;
+             thr = médiane pool figée; conf = |score - thr|"</span>,
+  <span class="s">"thr_pool"</span>: <span class="n">-0.006551</span>,
+  <span class="s">"tau_10pct"</span>: <span class="n">0.139247</span>,
+  <span class="s">"predict_regime"</span>: {
+    <span class="s">"coverage"</span>: <span class="n">0.1</span>, <span class="s">"n"</span>: <span class="n">21</span>,
+    <span class="s">"acc_measured_serving_recipe"</span>: <span class="n">0.952381</span>,
+    <span class="s">"wilson95"</span>: [<span class="n">0.7733</span>, <span class="n">0.9915</span>],
+    <span class="s">"acc_measured_LOAO"</span>: <span class="n">0.952</span>,
+    <span class="s">"note"</span>: <span class="s">"pred si conf&gt;=tau_10pct, sinon abstain"</span> } }</pre>
+      <p class="prose" style="margin-top:16px">How to read it: the attractor score of a query is
+      compared to <code>thr_pool</code> (the frozen pool median); the distance between the two is
+      the confidence. A verdict is rendered only when that confidence clears
+      <code>tau_10pct</code> — the bar chosen so that the answered slice (~10% of queries, n=21 in
+      leave-one-out) carries a <b>measured</b> accuracy of 0.952, with its Wilson interval
+      disclosed rather than hidden. Majority baseline on the pool: 0.647.</p>
+    </section>
+
+    <section id="predictor">
+      <div class="section-head">
+        <h2>predictor — the gold-axis calibration</h2>
+        <p><code>artifacts/predictor-mcp-calibration.json</code>, verbatim
+        (used by <code>assess_patch</code> — harness/evaluation mode only):</p>
+      </div>
+      <pre class="code">{ <span class="s">"w"</span>: <span class="n">-6.4910</span>, <span class="s">"b"</span>: <span class="n">-0.2681</span>, <span class="s">"mu"</span>: <span class="n">0.028668</span>,
+  <span class="s">"n_fit"</span>: <span class="n">113</span>, <span class="s">"n_pos"</span>: <span class="n">44</span>,
+  <span class="s">"energy_threshold_median"</span>: <span class="n">0.018680</span>,
+  <span class="s">"energy_threshold_youden"</span>: <span class="n">0.023278</span>,
+  <span class="s">"threshold_rule"</span>: <span class="s">"median(train-energies) per fold — outcome verdict E4"</span>,
+  <span class="s">"loao_acc"</span>: <span class="n">0.7345</span>, <span class="s">"loao_ci95"</span>: [<span class="n">0.6531</span>, <span class="n">0.8159</span>],
+  <span class="s">"majority"</span>: <span class="n">0.6106</span>,
+  <span class="s">"source"</span>: <span class="s">"latent-energy-act2-pool-fitted"</span> }</pre>
+      <p class="prose" style="margin-top:16px">The gold axis needs the goal text, so it never runs
+      in production — and its numbers are disclosed with the same discipline: LOAO accuracy 0.735,
+      CI95 [0.653, 0.816], against a majority baseline of 0.611. Useful in a harness; not dressed
+      up as more.</p>
+    </section>
+
+    <section id="abstain">
+      <div class="section-head"><h2>Reading an abstain</h2></div>
+      <p class="prose">Since v0.4.0 an abstention is not silence: it names the <b>nearest pool
+      family</b> and its <b>coverage</b> (how many rows, how many positives). That diagnosis is the
+      product — it tells your agent to decide with its own tests, and tells the flywheel where the
+      pool is thin.</p>
+      <pre class="code"><span class="c"># { "decision": "abstain",</span>
+<span class="c">#   "family": { "nearest_family": "…", "coverage": { "n": 6, "positives": 2 } },</span>
+<span class="c">#   "call_id": "…" }        your tests decide; report the outcome anyway</span></pre>
+    </section>
+
+    <section id="audit">
+      <div class="section-head"><h2>Audit it yourself</h2></div>
+      <p class="prose">The artifacts are content in the repo, not claims on a page:</p>
+      <pre class="code"><span class="c">$</span> git clone https://github.com/Denis-hamon/Ghost &amp;&amp; cd Ghost
+<span class="c">$</span> cat artifacts/risk-scan-v8-calibration.json
+<span class="c">$</span> cat artifacts/predictor-mcp-calibration.json</pre>
+      <p class="prose" style="margin-top:16px">The served pool itself (v8, n=207) is produced and
+      governed by the <a href="https://github.com/Denis-hamon/latent-imagination">Latent
+      Imagination</a> measurement project; the corpus release is on Zenodo
+      (<a href="https://doi.org/10.5281/zenodo.21837153">10.5281/zenodo.21837153</a>).</p>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <h5>GHOST MCP</h5>
+          <p class="about">The ghost of every past run grades your patch draft. Goal-free, calibrated,
+          advisory. An instrument of the Latent Imagination measurement project.</p>
+        </div>
+        <div>
+          <h5>Product</h5>
+          <ul>
+            <li><a href="../#what">What it is</a></li>
+            <li><a href="../#tools">Tools</a></li>
+            <li><a href="../#honesty">Honesty</a></li>
+            <li><a href="../#roadmap">Roadmap</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Open</h5>
+          <ul>
+            <li><a href="https://github.com/Denis-hamon/Ghost"><svg class="icon" style="width:13px;height:13px"><use href="#i-github"/></svg> GitHub repository</a></li>
+            <li><a href="https://github.com/Denis-hamon/latent-imagination">Measurement project</a></li>
+            <li><a href="https://doi.org/10.5281/zenodo.21837153">Corpus (Zenodo)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-fine">
+        <span>Apache-2.0 © 2026 Denis Hamon</span>
+      </div>
+    </div>
+  </footer>
+
+  </div><!-- /.main -->
+
+  <aside class="rail rail-right" aria-label="On this page">
+    <div class="rail-box toc-box">
+      <h6>On this page</h6>
+      <ul class="toc">
+        <li><a href="#top">Overview</a></li>
+        <li><a href="#why">Why a regime</a></li>
+        <li><a href="#riskscan">risk-scan v8</a></li>
+        <li><a href="#predictor">Gold-axis predictor</a></li>
+        <li><a href="#abstain">Reading an abstain</a></li>
+        <li><a href="#audit">Audit it yourself</a></li>
+      </ul>
+    </div>
+    <div class="rail-box rail-bottom">
+      <a href="https://github.com/Denis-hamon/Ghost" aria-label="GitHub"><svg class="icon" style="width:18px;height:18px"><use href="#i-github"/></svg></a>
+      <a class="btn btn-primary" href="../#install">Install <span class="kbd">I</span></a>
+    </div>
+  </aside>
+
+  </div><!-- /.shell -->
+
+  <script src="../site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelog — GHOST MCP</title>
+  <meta name="description" content="Every change to GHOST MCP, derived from the public repository history — nothing announced before it exists in a commit." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Inter:wght@400;430;450;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23222220'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%23f6f6f3' font-family='Georgia'%3EG%3C/text%3E%3C/svg%3E" />
+</head>
+<body class="sub">
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-github" viewBox="0 0 16 16">
+      <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+    </symbol>
+  </svg>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="../"><span class="mark">G</span> GHOST</a>
+      <ul class="nav-links">
+        <li><a href="../#what">What it is</a></li>
+        <li><a href="../#tools">Tools</a></li>
+        <li><a href="../#install">Install</a></li>
+        <li><a href="../#honesty">Honesty</a></li>
+        <li><a href="../#faq">FAQ</a></li>
+        <li><a href="../#roadmap">Roadmap</a></li>
+      </ul>
+      <a class="btn btn-primary" href="https://github.com/Denis-hamon/Ghost" style="box-shadow:none"><svg class="icon"><use href="#i-github"/></svg> GitHub <span class="kbd">↗</span></a>
+    </div>
+  </nav>
+
+  <div class="shell">
+
+  <aside class="rail rail-left" aria-label="Project panel">
+    <div class="rail-box">
+      <h6>Pool stats</h6>
+      <div class="statrow"><span>Labeled runs</span><b>207</b></div>
+      <div class="statrow"><span>Positives</span><b>73</b></div>
+      <div class="statrow"><span>Regime coverage</span><b>≈10%</b></div>
+      <div class="statrow"><span>Accuracy (LOAO)</span><b>0.952</b></div>
+      <div class="statrow"><span>τ (confidence bar)</span><b>0.1392</b></div>
+      <div class="statrow"><span>Served pool</span><b>v8</b></div>
+    </div>
+    <div class="rail-box">
+      <h6>Changelog <a href="../changelog/">View all</a></h6>
+      <div class="cl-item"><a href="../changelog/">Site v5 — vendor icons, motion, live tabs</a><time>2026-08-17</time></div>
+      <div class="cl-item"><a href="../changelog/">Family diagnostics for abstention</a><time>2026-08-15</time></div>
+      <div class="cl-item"><a href="../changelog/">Public repo — server v0.4.0 + calibration artifacts</a><time>2026-08-15</time></div>
+    </div>
+    <div class="rail-box">
+      <h6>Self-hosting guides <a href="../self-hosting/">All</a></h6>
+      <ul class="rail-links">
+        <li><a href="../self-hosting/#http">Remote HTTP (one URL)</a></li>
+        <li><a href="../self-hosting/#stdio">Local stdio (colocated)</a></li>
+        <li><a href="../self-hosting/#auth">Bearer token (fail-closed)</a></li>
+        <li><a href="../self-hosting/#env">Env overrides</a></li>
+      </ul>
+    </div>
+    <div class="rail-box">
+      <h6>Reference</h6>
+      <ul class="rail-links">
+        <li><a href="../tools/">Tools reference</a></li>
+        <li><a href="../calibration/">Served calibration</a></li>
+        <li><a href="https://github.com/Denis-hamon/latent-imagination">Measurement project</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.21837153">Corpus (Zenodo)</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="main">
+
+  <div class="container">
+    <div class="page-head" id="top">
+      <span class="crumb"><a href="../">GHOST</a> / changelog</span>
+      <h1 class="page-title">Every change, <span class="hl">as committed.</span></h1>
+      <p class="page-lede">This log is derived from the public repository history and the shipped
+      roadmap — <b>nothing is announced here before it exists in a commit</b>. Hashes link to GitHub.</p>
+    </div>
+
+    <section id="d20260817">
+      <div class="section-head"><h2>2026-08-17</h2></div>
+      <div class="road"><div class="when"><a href="https://github.com/Denis-hamon/Ghost/commit/be04e0c">be04e0c</a></div><div>
+        <h4>Footer cleanup <span class="chip chip-done">site</span></h4>
+        <p>Dropped the design-credit line from the footer.</p>
+      </div></div>
+      <div class="road"><div class="when"><a href="https://github.com/Denis-hamon/Ghost/commit/c2bc6d9">c2bc6d9</a></div><div>
+        <h4>Site v5 — icons &amp; motion <span class="chip chip-done">site</span></h4>
+        <p>Vendor marks in the client grid, octocat on GitHub buttons, functional auto-rotating
+        tabs backed by six grounded snippets, scroll reveals, highlight sweep, stat count-ups.
+        No-JS and reduced-motion render the static v4.</p>
+      </div></div>
+    </section>
+
+    <section id="d20260815">
+      <div class="section-head"><h2>2026-08-15</h2></div>
+      <div class="road"><div class="when"><a href="https://github.com/Denis-hamon/Ghost/commit/9fbcb52">9fbcb52</a></div><div>
+        <h4>Site v4 — faithfulness pass <span class="chip chip-done">site</span></h4>
+        <p>Layout re-measured from a full-styles capture: yellow highlight bars, centered hero,
+        tabbed white panel, 3+4 mosaic, real measured values throughout.</p>
+      </div></div>
+      <div class="road"><div class="when"><a href="https://github.com/Denis-hamon/Ghost/commit/ef93779">ef93779</a></div><div>
+        <h4>Site v3 — layout geometry <span class="chip chip-done">site</span></h4>
+        <p>840px container, 120px section rhythm, left-aligned editorial heads, boxed hero,
+        bordered cell grid, FAQ grid, CTA split card.</p>
+      </div></div>
+      <div class="road"><div class="when"><a href="https://github.com/Denis-hamon/Ghost/commit/885054d">885054d</a></div><div>
+        <h4>Site v2 — design language <span class="chip chip-done">site</span></h4>
+        <p>Light-first palette, serif display face, 12-section rhythm.</p>
+      </div></div>
+      <div class="road"><div class="when"><a href="https://github.com/Denis-hamon/Ghost/commit/fcf2fe8">fcf2fe8</a></div><div>
+        <h4>Public repo — server v0.4.0 <span class="chip chip-next">server</span></h4>
+        <p>First public release: stdio + HTTP MCP servers, calibration artifacts
+        (<code class="inline">risk-scan-v8</code>, <code class="inline">predictor-mcp</code>),
+        product site. Server code vendored from
+        <code class="inline">latent-imagination/scripts/mcp</code> @ 65afcf3.</p>
+      </div></div>
+    </section>
+
+    <section id="server">
+      <div class="section-head">
+        <h2>Server milestones</h2>
+        <p>Shipped upstream and reflected in what this repo serves — see the
+        <a href="../#roadmap">roadmap</a> for what comes next.</p>
+      </div>
+      <div class="road"><div class="when">2026-08-15</div><div>
+        <h4>Family diagnostics for abstention <span class="chip chip-done">shipped</span></h4>
+        <p>Pool rows carry mechanically-derived task families; abstentions name the
+        out-of-coverage family and its coverage instead of staying silent.</p>
+      </div></div>
+      <div class="road"><div class="when">2026-08-15</div><div>
+        <h4>Flywheel stage 2 + serving hardening <span class="chip chip-done">shipped</span></h4>
+        <p>Grounded pairs label-gated, deduplicated, assembled into goal-free rows; bearer-token
+        auth (fail-closed), pool provenance seals, WORM backup procedure.</p>
+      </div></div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <h5>GHOST MCP</h5>
+          <p class="about">The ghost of every past run grades your patch draft. Goal-free, calibrated,
+          advisory. An instrument of the Latent Imagination measurement project.</p>
+        </div>
+        <div>
+          <h5>Product</h5>
+          <ul>
+            <li><a href="../#what">What it is</a></li>
+            <li><a href="../#tools">Tools</a></li>
+            <li><a href="../#honesty">Honesty</a></li>
+            <li><a href="../#roadmap">Roadmap</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Open</h5>
+          <ul>
+            <li><a href="https://github.com/Denis-hamon/Ghost"><svg class="icon" style="width:13px;height:13px"><use href="#i-github"/></svg> GitHub repository</a></li>
+            <li><a href="https://github.com/Denis-hamon/latent-imagination">Measurement project</a></li>
+            <li><a href="https://doi.org/10.5281/zenodo.21837153">Corpus (Zenodo)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-fine">
+        <span>Apache-2.0 © 2026 Denis Hamon</span>
+      </div>
+    </div>
+  </footer>
+
+  </div><!-- /.main -->
+
+  <aside class="rail rail-right" aria-label="On this page">
+    <div class="rail-box toc-box">
+      <h6>On this page</h6>
+      <ul class="toc">
+        <li><a href="#top">Overview</a></li>
+        <li><a href="#d20260817">2026-08-17</a></li>
+        <li><a href="#d20260815">2026-08-15</a></li>
+        <li><a href="#server">Server milestones</a></li>
+      </ul>
+    </div>
+    <div class="rail-box rail-bottom">
+      <a href="https://github.com/Denis-hamon/Ghost" aria-label="GitHub"><svg class="icon" style="width:18px;height:18px"><use href="#i-github"/></svg></a>
+      <a class="btn btn-primary" href="../#install">Install <span class="kbd">I</span></a>
+    </div>
+  </aside>
+
+  </div><!-- /.shell -->
+
+  <script src="../site.js" defer></script>
+</body>
+</html>

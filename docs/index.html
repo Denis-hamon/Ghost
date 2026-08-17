@@ -90,7 +90,7 @@
 
   <!-- NAV -->
   <nav class="nav">
-    <div class="container nav-inner">
+    <div class="nav-inner">
       <a class="brand" href="#top"><span class="mark">G</span> GHOST</a>
       <ul class="nav-links">
         <li><a href="#what">What it is</a></li>
@@ -104,32 +104,79 @@
     </div>
   </nav>
 
+  <!-- SHELL: left rail · bordered center column · right rail -->
+  <div class="shell">
+
+  <!-- LEFT RAIL -->
+  <aside class="rail rail-left" aria-label="Project panel">
+    <div class="rail-box">
+      <h6>Pool stats</h6>
+      <div class="statrow"><span>Labeled runs</span><b>207</b></div>
+      <div class="statrow"><span>Positives</span><b>73</b></div>
+      <div class="statrow"><span>Regime coverage</span><b>≈10%</b></div>
+      <div class="statrow"><span>Accuracy (LOAO)</span><b>0.952</b></div>
+      <div class="statrow"><span>τ (confidence bar)</span><b>0.1392</b></div>
+      <div class="statrow"><span>Served pool</span><b>v8</b></div>
+    </div>
+    <div class="rail-box">
+      <h6>Changelog <a href="changelog/">View all</a></h6>
+      <div class="cl-item"><a href="changelog/">Site v5 — vendor icons, motion, live tabs</a><time>2026-08-17</time></div>
+      <div class="cl-item"><a href="changelog/">Family diagnostics for abstention</a><time>2026-08-15</time></div>
+      <div class="cl-item"><a href="changelog/">Public repo — server v0.4.0 + calibration artifacts</a><time>2026-08-15</time></div>
+    </div>
+    <div class="rail-box">
+      <h6>Self-hosting guides <a href="self-hosting/">All</a></h6>
+      <ul class="rail-links">
+        <li><a href="self-hosting/#http">Remote HTTP (one URL)</a></li>
+        <li><a href="self-hosting/#stdio">Local stdio (colocated)</a></li>
+        <li><a href="self-hosting/#auth">Bearer token (fail-closed)</a></li>
+        <li><a href="self-hosting/#env">Env overrides</a></li>
+      </ul>
+    </div>
+    <div class="rail-box">
+      <h6>Reference</h6>
+      <ul class="rail-links">
+        <li><a href="tools/">Tools reference</a></li>
+        <li><a href="calibration/">Served calibration</a></li>
+        <li><a href="https://github.com/Denis-hamon/latent-imagination">Measurement project</a></li>
+        <li><a href="https://doi.org/10.5281/zenodo.21837153">Corpus (Zenodo)</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- CENTER COLUMN -->
+  <div class="main">
+  <div class="hatch hatch-a" aria-hidden="true"></div>
+  <div class="hatch hatch-b" aria-hidden="true"></div>
+
   <!-- HERO -->
   <header class="hero" id="top">
     <div class="container">
-      <div class="usedby rise" style="--d:0s">
-        <span>Grounded on <b class="count" data-to="207">207</b> labeled runs</span>
-        <span><b class="count" data-to="0.952">0.952</b> accuracy in its measured regime</span>
-        <span><b>0</b> LLM judges in the decision path</span>
-      </div>
+      <div class="hero-frame">
+        <i class="tick tk-tl"></i><i class="tick tk-tr"></i><i class="tick tk-bl"></i><i class="tick tk-br"></i>
+        <div class="usedby rise" style="--d:0s">
+          <span>Grounded on <b class="count" data-to="207">207</b> labeled runs</span>
+          <span><b class="count" data-to="0.952">0.952</b> accuracy in its measured regime</span>
+          <span><b>0</b> LLM judges in the decision path</span>
+        </div>
 
-      <div class="hero-card">
-        <h1 class="rise" style="--d:100ms">The ghost of every
-          <span class="hl" style="--d:600ms">past run grades</span>
-          <span class="hl" style="--d:850ms">your patch draft.</span></h1>
-        <div class="hero-lede rise" style="--d:250ms">
-          <p><b>Goal-free world model for coding agents</b>, served over MCP. GHOST compares your
-          candidate diff to the geometry of past run outcomes — failures to avoid, successes to
-          imitate — before you spend the execution. When it does not know, it says so.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#install">Install via MCP <span class="kbd">I</span></a>
-            <a class="btn btn-ghost" href="https://github.com/Denis-hamon/Ghost"><svg class="icon"><use href="#i-github"/></svg> Documentation <span class="kbd">D</span></a>
-            <a class="btn btn-ghost" href="#how">How it works <span class="kbd">H</span></a>
+        <div class="hero-body">
+          <h1 class="rise" style="--d:100ms">The ghost of every
+            <span class="hl" style="--d:600ms">past run grades</span>
+            <span class="hl" style="--d:850ms">your patch draft.</span></h1>
+          <div class="hero-lede rise" style="--d:250ms">
+            <p><b>Goal-free world model for coding agents</b>, served over MCP. GHOST compares your
+            candidate diff to the geometry of past run outcomes — failures to avoid, successes to
+            imitate — before you spend the execution. When it does not know, it says so.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#install">Install via MCP <span class="kbd">I</span></a>
+              <a class="btn btn-ghost" href="https://github.com/Denis-hamon/Ghost"><svg class="icon"><use href="#i-github"/></svg> Documentation <span class="kbd">D</span></a>
+              <a class="btn btn-ghost" href="#how">How it works <span class="kbd">H</span></a>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="clientgrid rise" style="--d:450ms">
+        <div class="clientgrid rise" style="--d:450ms">
         <div class="cell"><svg class="icon"><use href="#i-claude"/></svg> Claude Code</div>
         <div class="cell"><svg class="icon"><use href="#i-opencode"/></svg> opencode</div>
         <div class="cell"><svg class="icon"><use href="#i-cursor"/></svg> Cursor</div>
@@ -141,7 +188,8 @@
         <div class="cell"><svg class="icon"><use href="#i-python"/></svg> Python</div>
         <div class="cell"><svg class="icon"><use href="#i-ts"/></svg> TypeScript</div>
         <div class="cell"><svg class="icon"><use href="#i-go"/></svg> Go</div>
-        <div class="cell"><svg class="icon"><use href="#i-stack"/></svg> your stack</div>
+          <div class="cell"><svg class="icon"><use href="#i-stack"/></svg> your stack</div>
+        </div>
       </div>
     </div>
   </header>
@@ -333,7 +381,7 @@ claude mcp add --transport http \
   </section>
 
   <!-- OPEN -->
-  <section>
+  <section id="open">
     <div class="container">
       <div class="section-head">
         <h2>Open platform. Open source.</h2>
@@ -367,7 +415,7 @@ claude mcp add --transport http \
   </section>
 
   <!-- WHY -->
-  <section>
+  <section id="why">
     <div class="container">
       <div class="section-head">
         <h2>Why use GHOST?</h2>
@@ -384,7 +432,7 @@ claude mcp add --transport http \
   </section>
 
   <!-- CTA -->
-  <section>
+  <section id="start">
     <div class="container">
       <h2 class="cta-h">Start scoring drafts in under five minutes.</h2>
       <div class="cta-card">
@@ -517,94 +565,35 @@ claude mcp add --transport http \
     </div>
   </footer>
 
-  <script>
-  (function () {
-    var rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!rm) document.body.classList.add('js');
-    addEventListener('load', function () {
-      requestAnimationFrame(function () { document.body.classList.add('loaded'); });
-    });
+  </div><!-- /.main -->
 
-    // ---- nav shadow on scroll
-    var nav = document.querySelector('.nav');
-    addEventListener('scroll', function () {
-      nav.classList.toggle('scrolled', scrollY > 8);
-    }, { passive: true });
+  <!-- RIGHT RAIL -->
+  <aside class="rail rail-right" aria-label="On this page">
+    <div class="rail-box toc-box">
+      <h6>On this page</h6>
+      <ul class="toc">
+        <li><a href="#top">Overview</a></li>
+        <li><a href="#what">What it is</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#install">Install</a></li>
+        <li><a href="#open">Open platform</a></li>
+        <li><a href="#honesty">Honesty</a></li>
+        <li><a href="#why">Why GHOST?</a></li>
+        <li><a href="#start">Get started</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+      </ul>
+    </div>
+    <div class="rail-box rail-bottom">
+      <a href="https://github.com/Denis-hamon/Ghost" aria-label="GitHub"><svg class="icon" style="width:18px;height:18px"><use href="#i-github"/></svg></a>
+      <a class="btn btn-primary" href="#install">Install <span class="kbd">I</span></a>
+    </div>
+  </aside>
 
-    // ---- functional tabs, auto-rotating until first user click
-    var tabs = Array.prototype.slice.call(document.querySelectorAll('.panel-tabs button'));
-    var panes = Array.prototype.slice.call(document.querySelectorAll('.panel-media > pre'));
-    var cur = 0, timer = null, auto = !rm;
-    function show(i, byUser) {
-      cur = i;
-      tabs.forEach(function (b, j) {
-        b.classList.toggle('on', j === i);
-        b.setAttribute('aria-selected', j === i ? 'true' : 'false');
-        b.classList.remove('prog');
-      });
-      panes.forEach(function (p, j) { p.classList.toggle('on', j === i); });
-      if (byUser) { auto = false; clearInterval(timer); }
-      else if (auto) { void tabs[i].offsetWidth; tabs[i].classList.add('prog'); }
-    }
-    tabs.forEach(function (b, i) {
-      b.addEventListener('click', function () { show(i, true); });
-    });
-    if (auto && tabs.length) {
-      timer = setInterval(function () { show((cur + 1) % tabs.length, false); }, 6000);
-      tabs[0].classList.add('prog');
-    }
+  </div><!-- /.shell -->
 
-    if (rm) return; // everything below is motion
-
-    // ---- scroll reveals with per-group stagger
-    var sel = '.section-head, .cards > *, .mosaic > *, .grid2 > *, .why > li, ' +
-              '.road, .faq-item, .honesty, .cta-h, .cta-card > div, .panel-wrap, .underbar';
-    var targets = Array.prototype.slice.call(document.querySelectorAll(sel));
-    targets.forEach(function (el) {
-      el.classList.add('reveal');
-      var i = Array.prototype.indexOf.call(el.parentElement.children, el);
-      el.style.setProperty('--i', i % 6);
-    });
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-      targets.forEach(function (el) { io.observe(el); });
-    } else {
-      targets.forEach(function (el) { el.classList.add('in'); });
-    }
-
-    // ---- count-up on the measured figures (final values stay the source of truth)
-    function countUp(el) {
-      var raw = el.getAttribute('data-to');
-      var to = parseFloat(raw);
-      var dec = (raw.split('.')[1] || '').length;
-      var t0 = performance.now(), D = 1100;
-      function frame(t) {
-        var p = Math.min(1, (t - t0) / D);
-        var e = 1 - Math.pow(1 - p, 3);
-        el.textContent = (to * e).toFixed(dec);
-        if (p < 1) requestAnimationFrame(frame);
-        else el.textContent = raw;
-      }
-      requestAnimationFrame(frame);
-    }
-    var counters = Array.prototype.slice.call(document.querySelectorAll('.count'));
-    if ('IntersectionObserver' in window) {
-      var io2 = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { countUp(e.target); io2.unobserve(e.target); }
-        });
-      }, { threshold: 0.6 });
-      counters.forEach(function (el) {
-        el.textContent = (0).toFixed((el.getAttribute('data-to').split('.')[1] || '').length);
-        io2.observe(el);
-      });
-    }
-  })();
-  </script>
+  <script src="site.js" defer></script>
 
 </body>
 </html>
