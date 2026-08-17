@@ -39,18 +39,18 @@
   <aside class="rail rail-left" aria-label="Project panel">
     <div class="rail-box">
       <h6>Pool stats</h6>
-      <div class="statrow"><span>Labeled runs</span><b>207</b></div>
-      <div class="statrow"><span>Positives</span><b>73</b></div>
+      <div class="statrow"><span>Grounded rows</span><b>430</b></div>
+      <div class="statrow"><span>Positives</span><b>205</b></div>
       <div class="statrow"><span>Regime coverage</span><b>≈10%</b></div>
-      <div class="statrow"><span>Accuracy (LOAO)</span><b>0.952</b></div>
-      <div class="statrow"><span>τ (confidence bar)</span><b>0.1392</b></div>
-      <div class="statrow"><span>Served pool</span><b>v8</b></div>
+      <div class="statrow"><span>Realized error (α=0.10)</span><b>9.1%</b></div>
+      <div class="statrow"><span>τ (conformal)</span><b>0.2171</b></div>
+      <div class="statrow"><span>Served pool</span><b>v12</b></div>
     </div>
     <div class="rail-box">
       <h6>Changelog <a href="../changelog/">View all</a></h6>
+      <div class="cl-item"><a href="../changelog/">Pool v12 promoted — conformal Mondrian calibration</a><time>2026-08-17</time></div>
       <div class="cl-item"><a href="../changelog/">Site v5 — vendor icons, motion, live tabs</a><time>2026-08-17</time></div>
       <div class="cl-item"><a href="../changelog/">Family diagnostics for abstention</a><time>2026-08-15</time></div>
-      <div class="cl-item"><a href="../changelog/">Public repo — server v0.4.0 + calibration artifacts</a><time>2026-08-15</time></div>
     </div>
     <div class="rail-box">
       <h6>Self-hosting guides <a href="../self-hosting/">All</a></h6>
@@ -127,6 +127,12 @@
         <p>Shipped upstream and reflected in what this repo serves — see the
         <a href="../#roadmap">roadmap</a> for what comes next.</p>
       </div>
+      <div class="road"><div class="when">2026-08-17</div><div>
+        <h4>Pool promotions v9 → v12 + conformal calibration <span class="chip chip-done">shipped</span></h4>
+        <p>Flywheel promotions up to pool v12 (430 grounded rows, 205 positives, encoder
+        jina-embeddings-v2-code); conformal Mondrian calibration with per-stratum error
+        guarantees ≤10% (realized 9.1% at α = 0.10), v6 positive control passed.</p>
+      </div></div>
       <div class="road"><div class="when">2026-08-15</div><div>
         <h4>Family diagnostics for abstention <span class="chip chip-done">shipped</span></h4>
         <p>Pool rows carry mechanically-derived task families; abstentions name the

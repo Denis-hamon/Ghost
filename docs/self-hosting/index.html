@@ -39,18 +39,18 @@
   <aside class="rail rail-left" aria-label="Project panel">
     <div class="rail-box">
       <h6>Pool stats</h6>
-      <div class="statrow"><span>Labeled runs</span><b>207</b></div>
-      <div class="statrow"><span>Positives</span><b>73</b></div>
+      <div class="statrow"><span>Grounded rows</span><b>430</b></div>
+      <div class="statrow"><span>Positives</span><b>205</b></div>
       <div class="statrow"><span>Regime coverage</span><b>≈10%</b></div>
-      <div class="statrow"><span>Accuracy (LOAO)</span><b>0.952</b></div>
-      <div class="statrow"><span>τ (confidence bar)</span><b>0.1392</b></div>
-      <div class="statrow"><span>Served pool</span><b>v8</b></div>
+      <div class="statrow"><span>Realized error (α=0.10)</span><b>9.1%</b></div>
+      <div class="statrow"><span>τ (conformal)</span><b>0.2171</b></div>
+      <div class="statrow"><span>Served pool</span><b>v12</b></div>
     </div>
     <div class="rail-box">
       <h6>Changelog <a href="../changelog/">View all</a></h6>
+      <div class="cl-item"><a href="../changelog/">Pool v12 promoted — conformal Mondrian calibration</a><time>2026-08-17</time></div>
       <div class="cl-item"><a href="../changelog/">Site v5 — vendor icons, motion, live tabs</a><time>2026-08-17</time></div>
       <div class="cl-item"><a href="../changelog/">Family diagnostics for abstention</a><time>2026-08-15</time></div>
-      <div class="cl-item"><a href="../changelog/">Public repo — server v0.4.0 + calibration artifacts</a><time>2026-08-15</time></div>
     </div>
     <div class="rail-box">
       <h6>Self-hosting guides <a href="../self-hosting/">All</a></h6>
@@ -137,7 +137,7 @@ claude mcp add --transport http ghost <span class="s">http://&lt;host&gt;:8093/m
       <pre class="code"><span class="c">$</span> git clone https://github.com/Denis-hamon/Ghost &amp;&amp; cd Ghost
 <span class="c">$</span> pip install -r requirements.txt
 <span class="c">$</span> python server/ghost_http_server.py
-<span class="c"># [ghost] serving http://0.0.0.0:8093/mcp (pool latent-pool-v8.json, stateless)</span></pre>
+<span class="c"># [ghost] serving http://0.0.0.0:8093/mcp (pool latent-pool-v12.json, stateless)</span></pre>
       <p class="prose" style="margin-top:16px">Weights, pool and calibration are loaded <b>before</b>
       serving, so the first call pays no cold-start latency.</p>
     </section>

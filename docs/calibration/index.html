@@ -39,18 +39,18 @@
   <aside class="rail rail-left" aria-label="Project panel">
     <div class="rail-box">
       <h6>Pool stats</h6>
-      <div class="statrow"><span>Labeled runs</span><b>207</b></div>
-      <div class="statrow"><span>Positives</span><b>73</b></div>
+      <div class="statrow"><span>Grounded rows</span><b>430</b></div>
+      <div class="statrow"><span>Positives</span><b>205</b></div>
       <div class="statrow"><span>Regime coverage</span><b>≈10%</b></div>
-      <div class="statrow"><span>Accuracy (LOAO)</span><b>0.952</b></div>
-      <div class="statrow"><span>τ (confidence bar)</span><b>0.1392</b></div>
-      <div class="statrow"><span>Served pool</span><b>v8</b></div>
+      <div class="statrow"><span>Realized error (α=0.10)</span><b>9.1%</b></div>
+      <div class="statrow"><span>τ (conformal)</span><b>0.2171</b></div>
+      <div class="statrow"><span>Served pool</span><b>v12</b></div>
     </div>
     <div class="rail-box">
       <h6>Changelog <a href="../changelog/">View all</a></h6>
+      <div class="cl-item"><a href="../changelog/">Pool v12 promoted — conformal Mondrian calibration</a><time>2026-08-17</time></div>
       <div class="cl-item"><a href="../changelog/">Site v5 — vendor icons, motion, live tabs</a><time>2026-08-17</time></div>
       <div class="cl-item"><a href="../changelog/">Family diagnostics for abstention</a><time>2026-08-15</time></div>
-      <div class="cl-item"><a href="../changelog/">Public repo — server v0.4.0 + calibration artifacts</a><time>2026-08-15</time></div>
     </div>
     <div class="rail-box">
       <h6>Self-hosting guides <a href="../self-hosting/">All</a></h6>
@@ -78,9 +78,10 @@
     <div class="page-head" id="top">
       <span class="crumb"><a href="../">GHOST</a> / calibration</span>
       <h1 class="page-title">The numbers, <span class="hl">as served.</span></h1>
-      <p class="page-lede">Both calibration artifacts below ship in the repository
-      (<code>artifacts/</code>) and are loaded by the server at boot — <b>what you audit here is
-      what grades your patch</b>.</p>
+      <p class="page-lede">The currently served pool is <b>v12</b> — its conformal calibration is
+      rendered verbatim below from the measurement project's sealed governance artifacts. The v8
+      artifacts still ship in this repository (<code>artifacts/</code>) and are kept for
+      comparison: <b>every number on this page comes from an artifact, not from copy</b>.</p>
     </div>
 
     <section id="why">
@@ -90,8 +91,8 @@
       </div>
       <table class="honesty-table">
         <tr><th>instrument</th><th>global</th><th>reliable regime</th></tr>
-        <tr><td><code>risk_scan</code> (goal-free)</td><td>AUC 0.615–0.675 — a rank, not a verdict</td>
-            <td>acc 0.952, Wilson 95% [0.773, 0.992] on the ~10% of queries it answers</td></tr>
+        <tr><td><code>risk_scan</code> (goal-free)</td><td>ext-LOAO AUC 0.708, CI95 [0.635, 0.775] on the certifiable population (211 rows) — a rank, not a verdict</td>
+            <td>realized error 9.1% (guarantee ≤10% per stratum, α = 0.10) on the ~10% of queries it answers</td></tr>
         <tr><td>everything else</td><td>—</td><td><code>abstain</code></td></tr>
       </table>
       <p class="prose" style="margin-top:16px">GHOST refuses to dress the global rank up as a
@@ -100,10 +101,35 @@
       signal for where the pool must grow.</p>
     </section>
 
+    <section id="v12">
+      <div class="section-head">
+        <h2>risk-scan v12 — the conformal calibration, currently served</h2>
+        <p><code>governance/act2/arm-artifacts/risk-scan-v12-conformal.json</code>
+        (measurement project, generated 2026-08-17), key fields verbatim:</p>
+      </div>
+      <pre class="code">{ <span class="s">"story"</span>: <span class="s">"12.1-conformal-mondrian"</span>,
+  <span class="s">"pool"</span>: <span class="s">"latent-pool-v12"</span>, <span class="s">"pool_sha256_16"</span>: <span class="s">"271c651bc053aa45"</span>,
+  <span class="s">"n_rows"</span>: <span class="n">430</span>, <span class="s">"positives"</span>: <span class="n">205</span>, <span class="s">"thr_pool"</span>: <span class="n">-0.003279</span>,
+  <span class="s">"v6_positive_control"</span>: { <span class="s">"expected"</span>: [<span class="n">0.822</span>, <span class="n">0.779</span>], <span class="s">"got"</span>: [<span class="n">0.822</span>, <span class="n">0.779</span>], <span class="s">"ok"</span>: <span class="n">true</span> },
+  <span class="s">"global_conformal"</span>: {
+    <span class="s">"alpha_0.05"</span>: { <span class="s">"tau"</span>: <span class="n">0.273575</span>, <span class="s">"kept"</span>: <span class="n">27</span>, <span class="s">"realized_err_rate"</span>: <span class="n">0.037</span>,
+                    <span class="s">"wilson95"</span>: [<span class="n">0.0066</span>, <span class="n">0.1828</span>], <span class="s">"coverage_share"</span>: <span class="n">0.0628</span> },
+    <span class="s">"alpha_0.10"</span>: { <span class="s">"tau"</span>: <span class="n">0.217081</span>, <span class="s">"kept"</span>: <span class="n">44</span>, <span class="s">"realized_err_rate"</span>: <span class="n">0.0909</span>,
+                    <span class="s">"wilson95"</span>: [<span class="n">0.0359</span>, <span class="n">0.2116</span>], <span class="s">"coverage_share"</span>: <span class="n">0.1023</span> } } }</pre>
+      <p class="prose" style="margin-top:16px">How to read it: for each registered α, τ is the
+      smallest confidence bar such that the error rate of kept answers (leave-one-out replay,
+      per Mondrian stratum) stays ≤ α — <b>a guarantee under intra-stratum exchangeability</b>,
+      with the finite-sample Wilson interval disclosed rather than hidden. At α = 0.10 the server
+      answers ~10% of queries with a realized error of 9.1%; strata with fewer than 12 rows get no
+      τ at all and always abstain. The v6 positive control (expected = got) guards the pipeline
+      against silent regressions.</p>
+    </section>
+
     <section id="riskscan">
       <div class="section-head">
-        <h2>risk-scan v8 — the serving calibration</h2>
-        <p><code>artifacts/risk-scan-v8-calibration.json</code>, verbatim:</p>
+        <h2>risk-scan v8 — shipped in this repository</h2>
+        <p><code>artifacts/risk-scan-v8-calibration.json</code>, verbatim — the previous
+        serving calibration, kept for comparison:</p>
       </div>
       <pre class="code">{ <span class="s">"pool"</span>: <span class="s">"latent-pool-v8.json"</span>,
   <span class="s">"n"</span>: <span class="n">207</span>, <span class="s">"positifs"</span>: <span class="n">73</span>, <span class="s">"majority"</span>: <span class="n">0.6473</span>,
@@ -162,7 +188,7 @@
       <pre class="code"><span class="c">$</span> git clone https://github.com/Denis-hamon/Ghost &amp;&amp; cd Ghost
 <span class="c">$</span> cat artifacts/risk-scan-v8-calibration.json
 <span class="c">$</span> cat artifacts/predictor-mcp-calibration.json</pre>
-      <p class="prose" style="margin-top:16px">The served pool itself (v8, n=207) is produced and
+      <p class="prose" style="margin-top:16px">The served pool itself (v12, n=430) is produced and
       governed by the <a href="https://github.com/Denis-hamon/latent-imagination">Latent
       Imagination</a> measurement project; the corpus release is on Zenodo
       (<a href="https://doi.org/10.5281/zenodo.21837153">10.5281/zenodo.21837153</a>).</p>
@@ -209,7 +235,8 @@
       <ul class="toc">
         <li><a href="#top">Overview</a></li>
         <li><a href="#why">Why a regime</a></li>
-        <li><a href="#riskscan">risk-scan v8</a></li>
+        <li><a href="#v12">risk-scan v12 (served)</a></li>
+        <li><a href="#riskscan">risk-scan v8 (shipped)</a></li>
         <li><a href="#predictor">Gold-axis predictor</a></li>
         <li><a href="#abstain">Reading an abstain</a></li>
         <li><a href="#audit">Audit it yourself</a></li>

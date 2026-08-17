@@ -111,18 +111,18 @@
   <aside class="rail rail-left" aria-label="Project panel">
     <div class="rail-box">
       <h6>Pool stats</h6>
-      <div class="statrow"><span>Labeled runs</span><b>207</b></div>
-      <div class="statrow"><span>Positives</span><b>73</b></div>
+      <div class="statrow"><span>Grounded rows</span><b>430</b></div>
+      <div class="statrow"><span>Positives</span><b>205</b></div>
       <div class="statrow"><span>Regime coverage</span><b>≈10%</b></div>
-      <div class="statrow"><span>Accuracy (LOAO)</span><b>0.952</b></div>
-      <div class="statrow"><span>τ (confidence bar)</span><b>0.1392</b></div>
-      <div class="statrow"><span>Served pool</span><b>v8</b></div>
+      <div class="statrow"><span>Realized error (α=0.10)</span><b>9.1%</b></div>
+      <div class="statrow"><span>τ (conformal)</span><b>0.2171</b></div>
+      <div class="statrow"><span>Served pool</span><b>v12</b></div>
     </div>
     <div class="rail-box">
       <h6>Changelog <a href="changelog/">View all</a></h6>
+      <div class="cl-item"><a href="changelog/">Pool v12 promoted — conformal Mondrian calibration</a><time>2026-08-17</time></div>
       <div class="cl-item"><a href="changelog/">Site v5 — vendor icons, motion, live tabs</a><time>2026-08-17</time></div>
       <div class="cl-item"><a href="changelog/">Family diagnostics for abstention</a><time>2026-08-15</time></div>
-      <div class="cl-item"><a href="changelog/">Public repo — server v0.4.0 + calibration artifacts</a><time>2026-08-15</time></div>
     </div>
     <div class="rail-box">
       <h6>Self-hosting guides <a href="self-hosting/">All</a></h6>
@@ -155,8 +155,8 @@
       <div class="hero-frame">
         <i class="tick tk-tl"></i><i class="tick tk-tr"></i><i class="tick tk-bl"></i><i class="tick tk-br"></i>
         <div class="usedby rise" style="--d:0s">
-          <span>Grounded on <b class="count" data-to="207">207</b> labeled runs</span>
-          <span><b class="count" data-to="0.952">0.952</b> accuracy in its measured regime</span>
+          <span>Grounded on <b class="count" data-to="430">430</b> real run outcomes</span>
+          <span><b class="count" data-to="9.1">9.1</b><b>%</b> realized error in its answered regime — ≤10% guaranteed</span>
           <span><b>0</b> LLM judges in the decision path</span>
         </div>
 
@@ -214,7 +214,7 @@
 <span class="c"># {</span>
 <span class="c">#   "decision": "high_risk",</span>
 <span class="c">#   "attractor_score": <span class="n">-0.2423</span>,        d(nearest fail) − d(nearest pass)</span>
-<span class="c">#   "confidence": <span class="n">0.2358</span>, "tau": <span class="n">0.1392</span>, verdict only inside the measured regime</span>
+<span class="c">#   "confidence": <span class="n">0.2358</span>, "tau": <span class="n">0.2171</span>, verdict only inside the measured regime</span>
 <span class="c">#   "family": { "nearest_family": <span class="s">"pyca__pyopenssl"</span>, "coverage": { "n": 6, "positives": 2 } },</span>
 <span class="c">#   "call_id": <span class="s">"3b11700f69f3"</span>           → report_outcome after your tests</span>
 <span class="c"># }</span></pre>
@@ -247,7 +247,7 @@
 <span class="c">#   "thr_pool": <span class="n">-0.0066</span>, "tau_10pct": <span class="n">0.1392</span>,</span>
 <span class="c">#   "predict_regime": { "coverage": <span class="n">0.10</span>, "n": <span class="n">21</span>,</span>
 <span class="c">#     "acc_measured_LOAO": <span class="n">0.952</span>, "wilson95": [<span class="n">0.773</span>, <span class="n">0.992</span>] } }</span>
-<span class="c"># τ and the regime ship with the server — audit before trusting a verdict.</span></pre>
+<span class="c"># shipped v8 artifact — the served v12 conformal calibration: /calibration/</span></pre>
             <pre class="code" style="border-radius:8px;margin:0"><span class="c"># nightly, on the serving host</span>
 outcomes.jsonl ─→ pair by call_id ─→ dedup ─→ stratify by author
                ─→ flag poison ─→ assemble goal-free rows
@@ -281,8 +281,8 @@ outcomes.jsonl ─→ pair by call_id ─→ dedup ─→ stratify by author
         <div class="card">
           <span class="glyph">02 · risk_scan</span>
           <h3>The ghost scores the draft</h3>
-          <p>State + diff embedded (UniXcoder-base), compared to every past outcome: nearest failure
-          versus nearest success.</p>
+          <p>State + diff embedded (jina-embeddings-v2-code), compared to every past outcome:
+          nearest failure versus nearest success.</p>
         </div>
         <div class="card">
           <span class="glyph">03 · run &amp; report</span>
@@ -305,7 +305,8 @@ outcomes.jsonl ─→ pair by call_id ─→ dedup ─→ stratify by author
           <span class="glyph">risk_scan · 1 embed</span>
           <h3>Goal-free verdict</h3>
           <p>Failure-attractor score with <b>calibrated abstention</b>: answers only inside the
-          LOAO-measured regime (acc 0.952), abstains with the reason everywhere else.</p>
+          conformal regime (realized error 9.1%, ≤10% guaranteed), abstains with the reason
+          everywhere else.</p>
         </div>
         <div class="tile">
           <span class="glyph">preflight_patch · 0 tokens</span>
@@ -403,9 +404,9 @@ claude mcp add --transport http \
         <span class="kicker">measured honesty</span>
         <h2>Every number here was <em style="color:#8b7bff">measured, and served.</em></h2>
         <div class="honesty-grid">
-          <div><b><span class="count" data-to="0.952">0.952</span></b><span>accuracy inside the calibrated regime — Wilson 95% CI [0.773, 0.992], leave-one-out</span></div>
+          <div><b><span class="count" data-to="9.1">9.1</span>%</b><span>realized error inside the conformal regime (α = 0.10) — Wilson 95% [3.6%, 21.2%], guarantee ≤10% per stratum</span></div>
           <div><b>≈<span class="count" data-to="10">10</span>%</b><span>of queries fall in that regime; the rest receive “abstain” with the reason</span></div>
-          <div><b>0.615–0.675</b><span>global goal-free AUC — a rank, disclosed, never dressed as a verdict</span></div>
+          <div><b>0.708</b><span>ext-LOAO AUC on the certifiable population (211 rows), CI95 [0.635, 0.775] — a rank, disclosed, never dressed as a verdict</span></div>
         </div>
         <p class="note">A verdict without a measured regime is indistinguishable from a guess. GHOST
         refuses to guess: an “abstain” names the nearest pool family and its coverage — which is
@@ -464,8 +465,8 @@ claude mcp add --transport http \
           <details class="faq-item" open>
             <summary>What is GHOST?</summary>
             <p class="a">A world model of patch outcomes for coding agents. It embeds (buggy state +
-            draft diff) into the space where 207 labeled past runs live, and scores the draft by its
-            distance to failures versus successes. Served over MCP; advisory only.</p>
+            draft diff) into the space where 430 grounded past outcomes live, and scores the draft
+            by its distance to failures versus successes. Served over MCP; advisory only.</p>
           </details>
           <details class="faq-item">
             <summary>Does it generate or rewrite patches?</summary>
@@ -474,9 +475,9 @@ claude mcp add --transport http \
           </details>
           <details class="faq-item">
             <summary>Why does it answer “abstain” so often?</summary>
-            <p class="a">The verdict guarantee (acc ≥ 0.95) only holds on ~10% of the query space
-            today. Outside it, any answer would be a guess. Abstention names the nearest pool family
-            and its coverage — the flywheel exists to close that gap.</p>
+            <p class="a">The error guarantee (≤10% per stratum, conformal) only holds on ~10% of the
+            query space today. Outside it, any answer would be a guess. Abstention names the nearest
+            pool family and its coverage — the flywheel exists to close that gap.</p>
           </details>
           <details class="faq-item">
             <summary>Can it block my agent’s actions?</summary>
@@ -516,9 +517,9 @@ claude mcp add --transport http \
           <h4>Flywheel stage 2 + serving hardening <span class="chip chip-done">shipped</span></h4>
           <p>Grounded pairs label-gated, deduplicated, assembled into goal-free rows; bearer-token auth (fail-closed), pool provenance seals, WORM backup procedure.</p>
         </div></div>
-        <div class="road"><div class="when">next</div><div>
-          <h4>Pool v9 promotion <span class="chip chip-next">next</span></h4>
-          <p>First flywheel promotion: embed assembled rows on the serving node, recompute the LOAO calibration, swap with disclosure and rollback to v8.</p>
+        <div class="road"><div class="when">2026-08-17</div><div>
+          <h4>Pool promotions v9 → v12 + conformal calibration <span class="chip chip-done">shipped</span></h4>
+          <p>Flywheel promotions up to pool v12 (430 grounded rows, encoder jina-embeddings-v2-code); conformal Mondrian calibration with per-stratum error guarantees ≤10%, v6 positive control passed, swap with disclosure and rollback.</p>
         </div></div>
         <div class="road"><div class="when">registered</div><div>
           <h4>Targeted growth of thin families <span class="chip chip-later">pre-registered</span></h4>
