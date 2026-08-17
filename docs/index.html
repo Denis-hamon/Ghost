@@ -16,6 +16,78 @@
 </head>
 <body>
 
+  <!-- ICON SPRITE (inline, monochrome via currentColor — vendor marks simplified) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-github" viewBox="0 0 16 16">
+      <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+    </symbol>
+    <symbol id="i-claude" viewBox="0 0 24 24">
+      <g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none">
+        <path d="M12 3.2v3.6"/><path d="M12 17.2v3.6"/><path d="M3.2 12h3.6"/><path d="M17.2 12h3.6"/>
+        <path d="M5.9 5.9l2.5 2.5"/><path d="M15.6 15.6l2.5 2.5"/><path d="M18.1 5.9l-2.5 2.5"/><path d="M8.4 15.6l-2.5 2.5"/>
+      </g>
+    </symbol>
+    <symbol id="i-openai" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.073zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997z"/>
+    </symbol>
+    <symbol id="i-cursor" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round">
+        <path d="M12 2.5l8.5 4.9v9.2L12 21.5l-8.5-4.9V7.4z"/>
+        <path d="M3.5 7.4L12 12.3l8.5-4.9M12 12.3v9.2"/>
+      </g>
+    </symbol>
+    <symbol id="i-cline" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="8" width="16" height="11" rx="3"/>
+        <path d="M12 8V4.5"/><circle cx="12" cy="3.6" r="1" fill="currentColor" stroke="none"/>
+      </g>
+      <circle cx="9.2" cy="13.5" r="1.5" fill="currentColor"/>
+      <circle cx="14.8" cy="13.5" r="1.5" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-opencode" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2.5" y="4" width="19" height="16" rx="2.5"/>
+        <path d="M6.5 9.5l3 3-3 3M12.5 15.5h5"/>
+      </g>
+    </symbol>
+    <symbol id="i-mcp" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 2.5V8M15 2.5V8"/>
+        <path d="M6.5 8h11v3.5a5.5 5.5 0 0 1-11 0z"/>
+        <path d="M12 17v4.5"/>
+      </g>
+    </symbol>
+    <symbol id="i-stdio" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 6l6 6-6 6"/><path d="M13 18h7"/>
+      </g>
+    </symbol>
+    <symbol id="i-http" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.6">
+        <circle cx="12" cy="12" r="9"/>
+        <ellipse cx="12" cy="12" rx="4" ry="9"/>
+        <path d="M3.6 9h16.8M3.6 15h16.8"/>
+      </g>
+    </symbol>
+    <symbol id="i-python" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/>
+    </symbol>
+    <symbol id="i-ts" viewBox="0 0 24 24">
+      <rect x="1.5" y="1.5" width="21" height="21" rx="3" fill="currentColor"/>
+      <text x="12" y="16.5" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="9.5" font-weight="700" fill="#f6f6f3">TS</text>
+    </symbol>
+    <symbol id="i-go" viewBox="0 0 24 24">
+      <text x="12" y="17" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="14" font-weight="700" font-style="italic" fill="currentColor">GO</text>
+    </symbol>
+    <symbol id="i-stack" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3l9 5-9 5-9-5z"/>
+        <path d="M3 13l9 5 9-5"/>
+        <path d="M3 17.5l9 5 9-5"/>
+      </g>
+    </symbol>
+  </svg>
+
   <!-- NAV -->
   <nav class="nav">
     <div class="container nav-inner">
@@ -28,48 +100,48 @@
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#roadmap">Roadmap</a></li>
       </ul>
-      <a class="btn btn-primary" href="https://github.com/Denis-hamon/Ghost" style="box-shadow:none">GitHub <span class="kbd">↗</span></a>
+      <a class="btn btn-primary" href="https://github.com/Denis-hamon/Ghost" style="box-shadow:none"><svg class="icon"><use href="#i-github"/></svg> GitHub <span class="kbd">↗</span></a>
     </div>
   </nav>
 
   <!-- HERO -->
   <header class="hero" id="top">
     <div class="container">
-      <div class="usedby">
-        <span>Grounded on <b>207</b> labeled runs</span>
-        <span><b>0.952</b> accuracy in its measured regime</span>
+      <div class="usedby rise" style="--d:0s">
+        <span>Grounded on <b class="count" data-to="207">207</b> labeled runs</span>
+        <span><b class="count" data-to="0.952">0.952</b> accuracy in its measured regime</span>
         <span><b>0</b> LLM judges in the decision path</span>
       </div>
 
       <div class="hero-card">
-        <h1>The ghost of every
-          <span class="hl">past run grades</span>
-          <span class="hl">your patch draft.</span></h1>
-        <div class="hero-lede">
+        <h1 class="rise" style="--d:100ms">The ghost of every
+          <span class="hl" style="--d:600ms">past run grades</span>
+          <span class="hl" style="--d:850ms">your patch draft.</span></h1>
+        <div class="hero-lede rise" style="--d:250ms">
           <p><b>Goal-free world model for coding agents</b>, served over MCP. GHOST compares your
           candidate diff to the geometry of past run outcomes — failures to avoid, successes to
           imitate — before you spend the execution. When it does not know, it says so.</p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#install">Install via MCP <span class="kbd">I</span></a>
-            <a class="btn btn-ghost" href="https://github.com/Denis-hamon/Ghost">Documentation <span class="kbd">D</span></a>
+            <a class="btn btn-ghost" href="https://github.com/Denis-hamon/Ghost"><svg class="icon"><use href="#i-github"/></svg> Documentation <span class="kbd">D</span></a>
             <a class="btn btn-ghost" href="#how">How it works <span class="kbd">H</span></a>
           </div>
         </div>
       </div>
 
-      <div class="clientgrid">
-        <div class="cell">Claude Code</div>
-        <div class="cell">opencode</div>
-        <div class="cell">Cursor</div>
-        <div class="cell">Cline</div>
-        <div class="cell">Codex CLI</div>
-        <div class="cell">any MCP client</div>
-        <div class="cell">stdio local</div>
-        <div class="cell">HTTP :8093</div>
-        <div class="cell">Python</div>
-        <div class="cell">TypeScript</div>
-        <div class="cell">Go</div>
-        <div class="cell">your stack</div>
+      <div class="clientgrid rise" style="--d:450ms">
+        <div class="cell"><svg class="icon"><use href="#i-claude"/></svg> Claude Code</div>
+        <div class="cell"><svg class="icon"><use href="#i-opencode"/></svg> opencode</div>
+        <div class="cell"><svg class="icon"><use href="#i-cursor"/></svg> Cursor</div>
+        <div class="cell"><svg class="icon"><use href="#i-cline"/></svg> Cline</div>
+        <div class="cell"><svg class="icon"><use href="#i-openai"/></svg> Codex CLI</div>
+        <div class="cell"><svg class="icon"><use href="#i-mcp"/></svg> any MCP client</div>
+        <div class="cell"><svg class="icon"><use href="#i-stdio"/></svg> stdio local</div>
+        <div class="cell"><svg class="icon"><use href="#i-http"/></svg> HTTP :8093</div>
+        <div class="cell"><svg class="icon"><use href="#i-python"/></svg> Python</div>
+        <div class="cell"><svg class="icon"><use href="#i-ts"/></svg> TypeScript</div>
+        <div class="cell"><svg class="icon"><use href="#i-go"/></svg> Go</div>
+        <div class="cell"><svg class="icon"><use href="#i-stack"/></svg> your stack</div>
       </div>
     </div>
   </header>
@@ -79,16 +151,16 @@
     <div class="container">
       <div class="panel-wrap">
         <div class="panel" style="border-radius:12px 12px 0 0">
-          <div class="panel-tabs">
-            <button class="on">Score a patch draft</button>
-            <button>Free preflight checks</button>
-            <button>Nearest real outcomes</button>
-            <button>Report grounded results</button>
-            <button>Audit the calibration</button>
-            <button>Grow the pool nightly</button>
+          <div class="panel-tabs" role="tablist">
+            <button class="on" role="tab" aria-selected="true">Score a patch draft</button>
+            <button role="tab" aria-selected="false">Free preflight checks</button>
+            <button role="tab" aria-selected="false">Nearest real outcomes</button>
+            <button role="tab" aria-selected="false">Report grounded results</button>
+            <button role="tab" aria-selected="false">Audit the calibration</button>
+            <button role="tab" aria-selected="false">Grow the pool nightly</button>
           </div>
           <div class="panel-media">
-            <pre class="code" style="border-radius:8px;margin:0"><span class="f">risk_scan</span>(state_text=<span class="s">"…buggy module…"</span>, diff_text=<span class="s">"diff --git a/patch.py …"</span>,
+            <pre class="code on" style="border-radius:8px;margin:0"><span class="f">risk_scan</span>(state_text=<span class="s">"…buggy module…"</span>, diff_text=<span class="s">"diff --git a/patch.py …"</span>,
           reporter=<span class="s">"your-agent-id"</span>)
 
 <span class="c"># {</span>
@@ -98,6 +170,42 @@
 <span class="c">#   "family": { "nearest_family": <span class="s">"pyca__pyopenssl"</span>, "coverage": { "n": 6, "positives": 2 } },</span>
 <span class="c">#   "call_id": <span class="s">"3b11700f69f3"</span>           → report_outcome after your tests</span>
 <span class="c"># }</span></pre>
+            <pre class="code" style="border-radius:8px;margin:0"><span class="f">preflight_patch</span>(repo_path=<span class="s">"."</span>, diff_text=<span class="s">"diff --git a/mod.py …"</span>)
+
+<span class="c"># {</span>
+<span class="c">#   "ok": <span class="n">true</span>,</span>
+<span class="c">#   "checks": { "apply": <span class="n">true</span>, "compile": { "mod.py": <span class="n">true</span> } },</span>
+<span class="c">#   "call_id": <span class="s">"9c41d2e07b2a"</span></span>
+<span class="c"># }</span>
+<span class="c"># git-apply --check · py_compile of the result · reverse-apply after.</span>
+<span class="c"># Deterministic. Zero LLM tokens — run before anything else.</span></pre>
+            <pre class="code" style="border-radius:8px;margin:0"><span class="f">near_mis_patches</span>(state_text=<span class="s">"…buggy module…"</span>, diff_text=<span class="s">"…"</span>, k=<span class="n">3</span>)
+
+<span class="c"># { "nearest": [</span>
+<span class="c">#     { "task": "pyca__pyopenssl-…", "arm": "on",  "y": <span class="n">1</span>, "sim": <span class="n">0.87</span> },   passed</span>
+<span class="c">#     { "task": "sqlfluff__sqlfluff-…", "arm": "off", "y": <span class="n">0</span>, "sim": <span class="n">0.81</span> },  failed</span>
+<span class="c">#     …one distinct task per neighbour…</span>
+<span class="c"># ] }</span>
+<span class="c"># What actually happened to the k closest past patches — evidence, not vibes.</span></pre>
+            <pre class="code" style="border-radius:8px;margin:0"><span class="f">report_outcome</span>(call_id=<span class="s">"3b11700f69f3"</span>, passed=<span class="n">True</span>,
+               reporter=<span class="s">"your-agent-id"</span>, grounded_by=<span class="s">"pytest-f2p"</span>)
+
+<span class="c"># "enregistré"</span>
+<span class="c"># Grounded outcomes only: tests-run, ci, human.</span>
+<span class="c"># Self-declared model opinions are rejected from reinforcement (lessons S11/S13).</span></pre>
+            <pre class="code" style="border-radius:8px;margin:0"><span class="c">$</span> cat artifacts/risk-scan-v8-calibration.json
+
+<span class="c"># { "pool": "latent-pool-v8.json", "n": <span class="n">207</span>, "positifs": <span class="n">73</span>,</span>
+<span class="c">#   "thr_pool": <span class="n">-0.0066</span>, "tau_10pct": <span class="n">0.1392</span>,</span>
+<span class="c">#   "predict_regime": { "coverage": <span class="n">0.10</span>, "n": <span class="n">21</span>,</span>
+<span class="c">#     "acc_measured_LOAO": <span class="n">0.952</span>, "wilson95": [<span class="n">0.773</span>, <span class="n">0.992</span>] } }</span>
+<span class="c"># τ and the regime ship with the server — audit before trusting a verdict.</span></pre>
+            <pre class="code" style="border-radius:8px;margin:0"><span class="c"># nightly, on the serving host</span>
+outcomes.jsonl ─→ pair by call_id ─→ dedup ─→ stratify by author
+               ─→ flag poison ─→ assemble goal-free rows
+
+<span class="c"># Promotion swaps the served pool WITH disclosure — and rolls back.</span>
+<span class="c"># Every grounded outcome you report widens the regime where GHOST can answer.</span></pre>
           </div>
         </div>
         <div class="underbar">
@@ -201,7 +309,7 @@
         <div class="tile">
           <span class="glyph">remote HTTP · recommended</span>
           <h3>One URL</h3>
-          <pre class="code"><span class="c"># Claude Code</span>
+          <pre class="code on"><span class="c"># Claude Code</span>
 claude mcp add --transport http \
   ghost <span class="s">http://&lt;host&gt;:8093/mcp</span>
 
@@ -213,7 +321,7 @@ claude mcp add --transport http \
         <div class="tile">
           <span class="glyph">local stdio · colocated</span>
           <h3>Zero network</h3>
-          <pre class="code">{ <span class="s">"mcpServers"</span>: { <span class="s">"ghost"</span>: {
+          <pre class="code on">{ <span class="s">"mcpServers"</span>: { <span class="s">"ghost"</span>: {
   <span class="s">"command"</span>: <span class="s">".venv/bin/python"</span>,
   <span class="s">"args"</span>: [<span class="s">"server/ghost_server.py"</span>]
 } } }
@@ -247,8 +355,8 @@ claude mcp add --transport http \
         <span class="kicker">measured honesty</span>
         <h2>Every number here was <em style="color:#8b7bff">measured, and served.</em></h2>
         <div class="honesty-grid">
-          <div><b>0.952</b><span>accuracy inside the calibrated regime — Wilson 95% CI [0.773, 0.992], leave-one-out</span></div>
-          <div><b>≈10%</b><span>of queries fall in that regime; the rest receive “abstain” with the reason</span></div>
+          <div><b><span class="count" data-to="0.952">0.952</span></b><span>accuracy inside the calibrated regime — Wilson 95% CI [0.773, 0.992], leave-one-out</span></div>
+          <div><b>≈<span class="count" data-to="10">10</span>%</b><span>of queries fall in that regime; the rest receive “abstain” with the reason</span></div>
           <div><b>0.615–0.675</b><span>global goal-free AUC — a rank, disclosed, never dressed as a verdict</span></div>
         </div>
         <p class="note">A verdict without a measured regime is indistinguishable from a guess. GHOST
@@ -284,7 +392,7 @@ claude mcp add --transport http \
           <h3>Get started</h3>
           <p>Add the server to your agent, keep running your tests, report what really happened.</p>
           <div class="cta-row" style="justify-content:flex-start">
-            <a class="btn btn-primary" href="https://github.com/Denis-hamon/Ghost">GitHub <span class="kbd">↗</span></a>
+            <a class="btn btn-primary" href="https://github.com/Denis-hamon/Ghost"><svg class="icon"><use href="#i-github"/></svg> GitHub <span class="kbd">↗</span></a>
             <a class="btn btn-ghost" href="#install">Install guide <span class="kbd">I</span></a>
           </div>
         </div>
@@ -397,7 +505,7 @@ claude mcp add --transport http \
         <div>
           <h5>Open</h5>
           <ul>
-            <li><a href="https://github.com/Denis-hamon/Ghost">GitHub repository</a></li>
+            <li><a href="https://github.com/Denis-hamon/Ghost"><svg class="icon" style="width:13px;height:13px"><use href="#i-github"/></svg> GitHub repository</a></li>
             <li><a href="https://github.com/Denis-hamon/latent-imagination">Measurement project</a></li>
             <li><a href="https://doi.org/10.5281/zenodo.21837153">Corpus (Zenodo)</a></li>
           </ul>
@@ -409,6 +517,95 @@ claude mcp add --transport http \
       </div>
     </div>
   </footer>
+
+  <script>
+  (function () {
+    var rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!rm) document.body.classList.add('js');
+    addEventListener('load', function () {
+      requestAnimationFrame(function () { document.body.classList.add('loaded'); });
+    });
+
+    // ---- nav shadow on scroll
+    var nav = document.querySelector('.nav');
+    addEventListener('scroll', function () {
+      nav.classList.toggle('scrolled', scrollY > 8);
+    }, { passive: true });
+
+    // ---- functional tabs, auto-rotating until first user click
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.panel-tabs button'));
+    var panes = Array.prototype.slice.call(document.querySelectorAll('.panel-media > pre'));
+    var cur = 0, timer = null, auto = !rm;
+    function show(i, byUser) {
+      cur = i;
+      tabs.forEach(function (b, j) {
+        b.classList.toggle('on', j === i);
+        b.setAttribute('aria-selected', j === i ? 'true' : 'false');
+        b.classList.remove('prog');
+      });
+      panes.forEach(function (p, j) { p.classList.toggle('on', j === i); });
+      if (byUser) { auto = false; clearInterval(timer); }
+      else if (auto) { void tabs[i].offsetWidth; tabs[i].classList.add('prog'); }
+    }
+    tabs.forEach(function (b, i) {
+      b.addEventListener('click', function () { show(i, true); });
+    });
+    if (auto && tabs.length) {
+      timer = setInterval(function () { show((cur + 1) % tabs.length, false); }, 6000);
+      tabs[0].classList.add('prog');
+    }
+
+    if (rm) return; // everything below is motion
+
+    // ---- scroll reveals with per-group stagger
+    var sel = '.section-head, .cards > *, .mosaic > *, .grid2 > *, .why > li, ' +
+              '.road, .faq-item, .honesty, .cta-h, .cta-card > div, .panel-wrap, .underbar';
+    var targets = Array.prototype.slice.call(document.querySelectorAll(sel));
+    targets.forEach(function (el) {
+      el.classList.add('reveal');
+      var i = Array.prototype.indexOf.call(el.parentElement.children, el);
+      el.style.setProperty('--i', i % 6);
+    });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      targets.forEach(function (el) { io.observe(el); });
+    } else {
+      targets.forEach(function (el) { el.classList.add('in'); });
+    }
+
+    // ---- count-up on the measured figures (final values stay the source of truth)
+    function countUp(el) {
+      var raw = el.getAttribute('data-to');
+      var to = parseFloat(raw);
+      var dec = (raw.split('.')[1] || '').length;
+      var t0 = performance.now(), D = 1100;
+      function frame(t) {
+        var p = Math.min(1, (t - t0) / D);
+        var e = 1 - Math.pow(1 - p, 3);
+        el.textContent = (to * e).toFixed(dec);
+        if (p < 1) requestAnimationFrame(frame);
+        else el.textContent = raw;
+      }
+      requestAnimationFrame(frame);
+    }
+    var counters = Array.prototype.slice.call(document.querySelectorAll('.count'));
+    if ('IntersectionObserver' in window) {
+      var io2 = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { countUp(e.target); io2.unobserve(e.target); }
+        });
+      }, { threshold: 0.6 });
+      counters.forEach(function (el) {
+        el.textContent = (0).toFixed((el.getAttribute('data-to').split('.')[1] || '').length);
+        io2.observe(el);
+      });
+    }
+  })();
+  </script>
 
 </body>
 </html>
