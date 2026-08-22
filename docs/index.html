@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GHOST MCP — the ghost of every past run grades your patch draft</title>
-  <meta name="description" content="GHOST is a goal-free world model for coding agents, served over MCP. It scores patch drafts against the geometry of past run outcomes, and abstains outside its measured regime." />
+  <meta name="description" content="GHOST is a goal-free world model built to sit inside a coding agent's own loop, served over MCP. It scores a candidate diff before you spend an execution, and abstains — rather than guesses — outside its proven regime." />
   <meta property="og:title" content="GHOST MCP" />
-  <meta property="og:description" content="The ghost of every past run grades your patch draft. Goal-free, calibrated, advisory." />
+  <meta property="og:description" content="The ghost of every past run grades your patch draft — for your agent's loop, not your eyes. Goal-free, calibrated, advisory." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -165,9 +165,11 @@
             <span class="hl" style="--d:600ms">past run grades</span>
             <span class="hl" style="--d:850ms">your patch draft.</span></h1>
           <div class="hero-lede rise" style="--d:250ms">
-            <p><b>Goal-free world model for coding agents</b>, served over MCP. GHOST compares your
-            candidate diff to the geometry of past run outcomes — failures to avoid, successes to
-            imitate — before you spend the execution. When it does not know, it says so.</p>
+            <p><b>Goal-free world model for coding agents</b>, served over MCP — built to be
+            consulted <em>by your agent's own loop</em>, not read by a human. GHOST scores a
+            candidate diff against the geometry of past outcomes before you spend an execution.
+            A calibrated abstain beats a confident guess — especially when the guesser is
+            another LLM asked to grade its own patch.</p>
             <div class="cta-row">
               <a class="btn btn-primary" href="#install">Install via MCP <span class="kbd">I</span></a>
               <a class="btn btn-ghost" href="https://github.com/Denis-hamon/Ghost"><svg class="icon"><use href="#i-github"/></svg> Documentation <span class="kbd">D</span></a>
@@ -422,6 +424,7 @@ claude mcp add --transport http \
         <h2>Why use GHOST?</h2>
       </div>
       <ul class="why">
+        <li><b>Built for the loop, not the eyeball</b><span>Called by the same agent that wrote the diff, as a pre-test gate — not read by a human as a review comment. Ask your own LLM “did this work?” and it answers confidently either way; GHOST answers only where the geometry is proven.</span></li>
         <li><b>Saves executions</b><span>A preflight is free; a risk scan is one embedding. Both happen before the expensive part.</span></li>
         <li><b>Cannot flatter</b><span>No confidence scores. A verdict is a geometric distance to past failures and successes, served only where the geometry is proven.</span></li>
         <li><b>Says when it’s blind</b><span>Out of regime → abstain, with family and coverage. Your agent decides with its own tests.</span></li>
@@ -467,6 +470,12 @@ claude mcp add --transport http \
             <p class="a">A world model of patch outcomes for coding agents. It embeds (buggy state +
             draft diff) into the space where 430 grounded past outcomes live, and scores the draft
             by its distance to failures versus successes. Served over MCP; advisory only.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Who is the client — me or my agent?</summary>
+            <p class="a">Your agent. GHOST is an MCP tool call wired into an agent's own loop —
+            a signal for “keep iterating or run the real test now,” consumed before a decision is
+            made. It is not written to be read as a code-review comment.</p>
           </details>
           <details class="faq-item">
             <summary>Does it generate or rewrite patches?</summary>
